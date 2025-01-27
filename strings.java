@@ -47,6 +47,9 @@ public class strings {
         }
         return result.trim();
     }
+
+// Capitalize firstchar of the string :::
+
     public static String capifirstchar(String str){
         String result = "";
         String words[] = str.split(" ");
@@ -59,11 +62,79 @@ public class strings {
         return result.trim();
     }
 
+// Count words :::
+
+        public static int cntwrds(String str){
+            String words[] = str.split("\\s+");
+            if(words.length == 1 && words[0].isEmpty()){
+                return 0;
+            }
+            return words.length;
+        } 
+
+    // concatenate string
+
+        public static String cncat(String a,String b){
+            return a+b;
+        }
+
+    //  reverse the order of words...
+
+    public static String revorderwrd(String str){
+        String words[]= str.split(" ");
+        StringBuilder reversed = new StringBuilder();
+        for(int i=words.length-1;i>=0;i--){
+            reversed.append(words[i]);
+            if(i>0){
+            reversed.append(" ");
+            }
+        }
+        return reversed.toString();
+    }
+
+//     Implement atoi and itoa functions
+// Implement the below functions with recursion from string library as your own functions.
+
+// 1. itoa() function converts int data type to string data type.
+// 2. atoi() function converts string data type to int data type.
+
+    // class Result {
+    //     static String itoa(int num) {
+    //          return Integer.toString(num); // Corrected: `num.toString()` to `Integer.toString(num)`
+    //     }
+    //     static int atoi(String str) {
+    //       return Integer.parseInt(str);    
+    //     }
+    //   }
+
+    // MINIMIZE THE GIVEN STRING :::
+
+    public static String getdesiredrresult(String str){
+        StringBuilder s =new StringBuilder();
+        char lastchar ='\0';
+        for(char c : str.toCharArray()){
+            if(c!=lastchar){
+                s.append(c);
+            }
+            lastchar = c;
+        }
+        return s.toString();
+    }
+    
     public static void main(String args[]){
         String str = "Mom and Dad are my best friend";
         System.out.println(cntpalindrome(str));
         System.out.println(swap(str));
         System.out.println(capifirstchar(str));
+        System.out.println(cntwrds(str));
+        String s = "";
+        System.out.println(cntwrds(s));
+        String f = "this";
+        String h = "hlowrld";
+        System.out.println(cncat(f, h));
+        System.out.println(revorderwrd(str));
+        String se ="aaabbbccc";
+        System.out.println(getdesiredrresult(se));
 }
 }
 
