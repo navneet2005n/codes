@@ -110,17 +110,17 @@ public class strings {
     // MINIMIZE THE GIVEN STRING :::
 
     public static String getdesiredrresult(String str){
-        StringBuilder s =new StringBuilder();
+        StringBuilder s = new StringBuilder();
         char lastchar ='\0';
         for(char c : str.toCharArray()){
-            if(c!=lastchar){
+            if(c != lastchar){
                 s.append(c);
             }
             lastchar = c;
         }
         return s.toString();
     }
-    
+
     public static void main(String args[]){
         String str = "Mom and Dad are my best friend";
         System.out.println(cntpalindrome(str));
