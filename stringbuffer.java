@@ -1,3 +1,6 @@
+
+// Stringbuffer is used to make strings mutable...
+
 public class stringbuffer {
     public static void main(String args[]){
         StringBuffer inst = new StringBuffer("hello");
@@ -8,7 +11,6 @@ public class stringbuffer {
         System.out.println(inst);
     }
 }
-
 
 // The length of "hello" is 5, so:
 // Valid indices for insert(index, "text") are 0 to 5 (inclusive).

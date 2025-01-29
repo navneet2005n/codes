@@ -63,36 +63,67 @@ public class twod_arr {
         return sum;
     }
     
-    public static void spiral(int matrix[][]){
-        int startrow=0;
-        int startcol=0;
-        int endcol=matrix[0].length-1;
-        int endrow=matrix.length-1;
-        while(startrow<=endrow && startcol<=endcol){
-            for(int j=startcol;j<=endcol;j++){
-                System.out.print(matrix[startrow][j]+" ");
+    // public static void spiral(int matrix[][]){
+    //     int startrow=0;
+    //     int startcol=0;
+    //     int endcol=matrix[0].length-1;
+    //     int endrow=matrix.length-1;
+    //     while(startrow<=endrow && startcol<=endcol){
+    //         for(int j=startcol;j<=endcol;j++){
+    //             System.out.print(matrix[startrow][j]+" ");
+    //         }
+    //         for(int i=startrow+1;i<=endrow;i++){
+    //             System.out.print(matrix[i][endcol]+" ");
+    //         }
+    //         for(int j=endcol-1;j>=startcol;j--){
+    //             if (startrow==endrow) {
+    //                 break;
+    //             }
+    //             System.out.print(matrix[endrow][j]+" ");
+    //         }
+    //         for(int i=endrow-1;i>startrow;i--){
+    //             if(startcol==endcol){
+    //                 break;
+    //             }
+    //             System.out.print(matrix[i][startcol]+" ");
+    //         }
+    //         startcol++;
+    //         startrow++;
+    //         endrow--;
+    //         endcol--;
+    //     }
+    // }
+
+    public static void spiral(int matrix[][]) {
+        int startrow = 0;
+        int startcol = 0;
+        int endcol = matrix[0].length - 1;
+        int endrow = matrix.length - 1;
+        while (startrow <= endrow && startcol <= endcol) {
+            for (int j = startcol; j <= endcol; j++) {
+                System.out.print(matrix[startrow][j] + " ");
             }
-            for(int i=startrow+1;i<=endrow;i++){
-                System.out.print(matrix[i][endcol]+" ");
-            }
-            for(int j=endcol-1;j>=startcol;j--){
-                // if (startrow==endrow) {
-                //     break;
-                // }
-                System.out.print(matrix[endrow][j]+" ");
-            }
-            for(int i=endrow-1;i>startrow;i--){
-                // if(startcol==endcol){
-                //     break;
-                // }
-                System.out.print(matrix[i][startcol]+" ");
-            }
-            startcol++;
             startrow++;
+            for (int i = startrow; i <= endrow; i++) {
+                System.out.print(matrix[i][endcol] + " ");
+            }
+            endcol--; 
+            if (startrow <= endrow) {
+            for (int j = endcol; j >= startcol; j--) {
+               System.out.print(matrix[endrow][j] + " ");
+            }
             endrow--;
-            endcol--;
+            }
+            if (startcol <= endcol) {
+                for (int i = endrow; i >= startrow; i--) {
+                    System.out.print(matrix[i][startcol] + " ");
+                }
+            startcol++; 
+            }
         }
     }
+
+
     public static void transpose(int matrix[][]){
         for(int i=0;i<matrix.length;i++){
             for(int j=i+1;j<matrix[0].length;j++){
@@ -102,6 +133,7 @@ public class twod_arr {
             }
         }
     }
+
     public static void main(String args[]){
         int matrix[][] = new int[3][3];
         Scanner sc=new Scanner(System.in);
@@ -140,3 +172,4 @@ public class twod_arr {
         spiral(matrix);
     }
 }
+

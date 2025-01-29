@@ -1,4 +1,4 @@
-// removeNthFromEnd nth node from last node
+                           // removeNthFromEnd nth node from last node
 
 // class Solution {
 //     public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -21,7 +21,7 @@
 //     } 
 // }
 
-// Code to sort a linkedlist ...
+                                  // Code to sort a linkedlist ...
 
 // class Solution {
 //     public ListNode sortList(ListNode head) {
@@ -42,7 +42,7 @@
 // }
 
 
-// COUNT FREQUENCY OF GIVEN ELEMENTS ...
+                                       // COUNT FREQUENCY OF GIVEN ELEMENTS ...
 
 // getOrDefault(num, 0):
 // num is the key we are looking up in the HashMap.
@@ -75,3 +75,34 @@
 //     }
 // }
 
+
+                                         // Set Matrix Zeroes :::::
+
+// class Solution {
+//     public void setZeroes(int[][] matrix) {
+//         int placeholder = -19999; 
+//         for (int i = 0; i < matrix.length; i++) {
+//             for (int j = 0; j < matrix[0].length; j++) {
+//                 if (matrix[i][j] == 0) {
+//                     for (int k = 0; k < matrix[0].length; k++) {
+//                         if (matrix[i][k] != 0) {
+//                             matrix[i][k] = placeholder;
+//                         }
+//                     }
+//                     for (int m = 0; m < matrix.length; m++) {
+//                         if (matrix[m][j] != 0) {
+//                             matrix[m][j] = placeholder;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//         for (int i = 0; i < matrix.length; i++) {
+//             for (int j = 0; j < matrix[0].length; j++) {
+//                 if (matrix[i][j] == placeholder) {
+//                     matrix[i][j] = 0;
+//                 }
+//             }
+//         }
+//     }
+// }

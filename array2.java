@@ -62,6 +62,45 @@
 //     }
 // }
 
+                // spiral code
+
+// public static void spiral(int matrix[][]) {
+//         int startrow = 0;
+//         int startcol = 0;
+//         int endcol = matrix[0].length - 1;
+//         int endrow = matrix.length - 1;
+        
+//         while (startrow <= endrow && startcol <= endcol) {
+//             // Traverse from left to right
+//             for (int j = startcol; j <= endcol; j++) {
+//                 System.out.print(matrix[startrow][j] + " ");
+//             }
+//             startrow++; // Move row start up
+    
+//             // Traverse down the rightmost column
+//             for (int i = startrow; i <= endrow; i++) {
+//                 System.out.print(matrix[i][endcol] + " ");
+//             }
+//             endcol--; // Move column end left
+    
+//             // Check if a row remains before printing from right to left
+//             if (startrow <= endrow) {
+//                 for (int j = endcol; j >= startcol; j--) {
+//                     System.out.print(matrix[endrow][j] + " ");
+//                 }
+//                 endrow--; // Move row end up
+//             }
+    
+//             // Check if a column remains before printing from bottom to top
+//             if (startcol <= endcol) {
+//                 for (int i = endrow; i >= startrow; i--) {
+//                     System.out.print(matrix[i][startcol] + " ");
+//                 }
+//                 startcol++; // Move column start right
+//             }
+//         }
+//     }
+    
 
 
 
