@@ -44,6 +44,8 @@ public class twod_arr {
             return;
         }
     }
+
+
     public static void find(int matrix[][],int key){
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length;j++){
@@ -53,6 +55,8 @@ public class twod_arr {
             }
         }
     }
+
+
     public static int sum(int matrix[][]){
         int sum=0;
         for(int i=0;i<matrix.length;i++){
@@ -63,6 +67,7 @@ public class twod_arr {
         return sum;
     }
     
+
     // public static void spiral(int matrix[][]){
     //     int startrow=0;
     //     int startcol=0;
@@ -94,6 +99,7 @@ public class twod_arr {
     //     }
     // }
 
+    
     public static void spiral(int matrix[][]) {
         int startrow = 0;
         int startcol = 0;
