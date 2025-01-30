@@ -11,9 +11,10 @@
 class Student {
     int roll;
     String name;
-
+    int marks[];
+    String password;
     // Default Constructor
-    Student() {
+    Student(){  // non parameterized constructor 
         System.out.println("Constructor is being called...");
     }
 
@@ -24,13 +25,40 @@ class Student {
 // examples:::
 // Constructor Overloading
 
+
+//  SHALLOW COPY ::: THAT IS NOT SO DEEP AND NOT MUCH VISIBLE....
+
+    // Student(Student s1){
+    //     marks = new int[3];
+    //     this.name = s1.name;
+    //     this.roll= s1.roll;
+    //     this.marks = s1.marks;
+    // }
+
+//  DEEP COPY CONSTRUCTOR ::: THAT IS VERY DEEP AND VISIBLE....
+//   It does not changes the original value of the array....
+
+    Student(Student s1){
+        marks = new int[3];
+        this.name = s1.name;
+        this.roll = s1.roll;
+        this.marks = new int[s1.marks.length];
+        for(int i = 0;i<marks.length;i++){
+            this.marks[i] = s1.marks[i];
+        }
+    }
+
     Student(String name) {
+        marks = new int[3];
         this.name = name;
     }
+    // parameterized constructor :::
     Student(int roll) {
+        marks = new int[3];
         this.roll = roll;
     }
     Student(String name, int roll) {
+        marks = new int[3];
         this.name = name;
         this.roll = roll;
     }
@@ -61,6 +89,11 @@ class Pen {
     }
 }
 
+
+
+// Inheritance is when properties and methods of base class are passed on to derived class...
+
+
 public class Oops{
     public static void main(String args[]) {
         // Creating and using Pen object
@@ -75,8 +108,21 @@ public class Oops{
         b1.setPassword("acbfds"); // Setting password (cannot access it directly)
         // Creating Student objects
         Student s1 = new Student("Pandu");
+        s1.marks[0]=98;
+        s1.marks[1]=69;
+        s1.marks[2]=84;
         System.out.println(s1.name);
         Student s2 = new Student("Jamshed", 69);
+        Student s3 = new Student(s1);
+        s3.password ="sdcdc";
+
+// here after the copying of constructor we are changing the marks but also being changed 
+// in the copied object because they refer to the same object.......
+
+        s1.marks[2]=55;
+        System.out.println(s3.marks[0]);
+        System.out.println(s3.marks[1]);
+        System.out.println(s3.marks[2]);
         System.out.println(s2.name);
     }
 }

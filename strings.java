@@ -42,7 +42,7 @@ public class strings {
                 result += lastchar + word.substring(1, word.length()-1) + firstchar+" " ; 
             }
             else{
-                result+=word+" ";
+                result += word+" ";
             }
         }
         return result.trim();
@@ -57,7 +57,7 @@ public class strings {
             if(!word.isEmpty()){
                 word = word.substring(0,1).toUpperCase()+word.substring(1)+" ";
             }
-            result +=word;
+            result += word;
         }
         return result.trim();
     }
@@ -92,7 +92,7 @@ public class strings {
         return reversed.toString();
     }
 
-//     Implement atoi and itoa functions
+// Implement atoi and itoa functions
 // Implement the below functions with recursion from string library as your own functions.
 
 // 1. itoa() function converts int data type to string data type.
