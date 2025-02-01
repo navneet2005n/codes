@@ -1,16 +1,19 @@
 import java.util.Scanner;
 public class twod_arr {
+
     public static int diag_sum(int matrix[][]){
-        int sum=0;
+        int sum = 0;
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length;j++){
                 if(i == j || i+j == matrix.length-1){
-                    sum+=matrix[i][j];
+                    sum += matrix[i][j];
                 }
             }
         }
         return sum;
     }
+
+
     public static int max(int matrix[][]){
         int max=matrix[0][0];
         for(int i=0;i<matrix.length;i++){
@@ -21,7 +24,9 @@ public class twod_arr {
             }
         }
         return max;
-    }                                                
+    }         
+
+
     public static void boundary_elm(int matrix[][]){
         int startrow=0;
         int startcol=0;
@@ -40,9 +45,9 @@ public class twod_arr {
             System.out.print(matrix[i][startcol]+" ");
         }
         System.out.println();
-        if (matrix[startrow][startcol] == matrix[endrow][endcol]) {
-            return;
-        }
+        // if(matrix[startrow][startcol] == matrix[endrow][endcol]){
+        //     return;
+        // }
     }
 
 
@@ -100,6 +105,36 @@ public class twod_arr {
     // }
 
     
+    // find maximum and minimum element in the primary and secondary diagonals
+
+    public static int max_diagonal(int matrix[][]){
+        int max= matrix[0][0];
+        for(int i = 0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(i==j || i+j == matrix.length-1){
+                    if (matrix[i][j]>max){
+                        max  = matrix[i][j];
+                    }
+                }
+            }
+        }
+        return max;
+    }
+
+    public static int min_diagonal(int matrix[][]){
+        int min= matrix[0][0];
+        for(int i = 0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(i==j || i+j == matrix.length-1){
+                    if (matrix[i][j]<min){
+                        min  = matrix[i][j];
+                    }
+                }
+            }
+        }
+        return min;
+    }
+
     public static void spiral(int matrix[][]) {
         int startrow = 0;
         int startcol = 0;
@@ -130,6 +165,28 @@ public class twod_arr {
     }
 
 
+    public static int bndr_sum(int matrix[][]){
+        int startrow = 0;
+        int endrow = matrix.length-1;
+        int strcol = 0;
+        int endcol = matrix[0].length-1;
+        int sum =  0;
+        for(int j =strcol;j<=endcol;j++){
+            sum += matrix[startrow][j];
+        }
+        for(int i = startrow+1;i<=endrow;i++){
+            sum += matrix[i][endcol];
+        }
+        for(int j=endcol-1;j>=strcol;j--){
+            sum+=matrix[endrow][j];
+        }
+        for(int i=endrow-1;i>startrow;i--){
+            sum+=matrix[i][strcol];
+        }
+        return sum;
+    }
+
+
     public static void transpose(int matrix[][]){
         for(int i=0;i<matrix.length;i++){
             for(int j=i+1;j<matrix[0].length;j++){
@@ -140,6 +197,7 @@ public class twod_arr {
         }
     }
 
+    
     public static void main(String args[]){
         int matrix[][] = new int[3][3];
         Scanner sc=new Scanner(System.in);
@@ -158,24 +216,26 @@ public class twod_arr {
         }
         System.out.print("Sum of primary and secondary diagonals: ");
         System.out.println(diag_sum(matrix));
-        System.out.print("Largest element in the matrix: " );
-        System.out.println(max(matrix));
-        sc.close();
+        // System.out.print("Largest element in the matrix: " );
+        // System.out.println(max(matrix));
+        // sc.close();
         System.out.print("Boundary Elements of the matrix: ");
         boundary_elm(matrix);
-        find(matrix, 6);
-        transpose(matrix);
-        System.out.println("Your Matrix after transpose is: ");
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
-                System.out.print(matrix[i][j]+" ");
-            }
-            System.out.println();
-        }
-        System.out.print("Sum of elements of the matrix is: ");
-        System.out.println(sum(matrix));
-        System.out.println("Spiral of the matrix is: ");
-        spiral(matrix);
+        // find(matrix, 6);
+        // transpose(matrix);
+        // System.out.println("Your Matrix after transpose is: ");
+        // for(int i=0;i<matrix.length;i++){
+        //     for(int j=0;j<matrix[0].length;j++){
+        //         System.out.print(matrix[i][j]+" ");
+        //     }
+        //     System.out.println();
+        // }
+        // System.out.print("Sum of elements of the matrix is: ");
+        // System.out.println(sum(matrix));
+        // System.out.println("Spiral of the matrix is: ");
+        // spiral(matrix);
+        System.out.println(max_diagonal(matrix));
+        System.out.println(bndr_sum(matrix));
     }
 }
 

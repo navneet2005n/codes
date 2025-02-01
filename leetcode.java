@@ -1,4 +1,4 @@
-                           // removeNthFromEnd nth node from last node
+                  // removeNthFromEnd nth node from last node
 
 // class Solution {
 //     public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -107,31 +107,107 @@
 //     }
 // }
 
-class Solution {
-    public int findMin(int[] nums){
 
-// linear search :::
+// FIND MINIMUM OF THE SORTED AND ROTATED ARRAY :::
 
-        // int min=nums[0];
-        // for(int i=0;i<nums.length;i++){
-        //     if(nums[i]<min){
-        //         min=nums[i];
-        //     }
-        // }
-        // return min;
+// class Solution {
+//     public int findMin(int[] nums){
 
-// binary search
+// // linear search :::
 
-        int start = 0;
-        int end = nums.length - 1;
-        while (start < end) { 
-            int mid = start + (end - start) / 2;
-            if (nums[mid] < nums[end]) {
-                end = mid; 
-            } else {
-                start = mid + 1;
+//         // int min=nums[0];
+//         // for(int i=0;i<nums.length;i++){
+//         //     if(nums[i]<min){
+//         //         min=nums[i];
+//         //     }
+//         // }
+//         // return min;
+
+// // binary search
+
+//         int start = 0;
+//         int end = nums.length - 1;
+//         while (start < end) { 
+//             int mid = start + (end - start) / 2;
+//             if (nums[mid] < nums[end]) {
+//                 end = mid; 
+//             } else {
+//                 start = mid + 1;
+//             }
+//         }
+//         return nums[start];
+//     }
+// }
+
+
+   
+                            // GREATEST COMMON DIVISOR :::
+
+// class leetcode{
+// public static int gcd(int a,int b){
+//         while(b!=0){
+//             int temp = b;
+//             b = a % b;
+//             a = temp;
+//         }
+//         return a;
+//     }
+// public static void main(String args[]){
+//     int a = 20;
+//     int b = 15;
+//     System.out.println(gcd(a, b));
+// }
+// }
+
+                                // String odd pairs:::
+
+// class leetcode{
+// public static boolean oddpairs(String str){
+//     int i=0;
+//     while(i<str.length()-1){
+//         char currchar = str.charAt(i);
+//         char nextchar = str.charAt(i+1);
+//         if (Character.isDigit(currchar) && Character.isDigit(nextchar)) {
+//             if ((currchar % 2 != 0) && (nextchar % 2 != 0)) {
+//                 return true;
+//             }
+//         }
+//         i++;
+//     }
+//     return false;
+// }
+//     public static void main(String args[]){
+//         String str = "e43fg58";
+//         System.out.println(oddpairs(str));
+// }
+// }
+
+import java.util.HashSet;
+public class leetcode {
+    public static int gcd(int a, int b) {
+        HashSet<Integer> set1 = new HashSet<>();
+        HashSet<Integer> set2 = new HashSet<>();
+        for (int i = 1; i <= a; i++) {
+            if (a % i == 0) {
+                set1.add(i);
             }
         }
-        return nums[start];
+        for (int i = 1; i <= b; i++){
+            if (b % i == 0 && set1.contains(i)) {
+                set2.add(i);
+            }
+        }
+        int max = 1;
+        for (int num : set2) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+    public static void main(String[] args) {
+        int a = 36, b = 48;
+        System.out.println("GCD of " + a + " and " + b + "is: " + gcd(a, b));
     }
 }
+
