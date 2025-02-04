@@ -206,8 +206,30 @@ public class leetcode {
         return max;
     }
     public static void main(String[] args) {
-        int a = 36, b = 48;
-        System.out.println("GCD of " + a + " and " + b + "is: " + gcd(a, b));
+        int a=36,b=48;
+        System.out.println(gcd(a, b));
     }
 }
+
+                        // Check if the array is sorted and rotated :::::
+
+
+// class Solution {
+//     public boolean check(int[] nums) {
+//         int count=0;
+//         int n=nums.length;
+//        for(int i=1;i<n;i++){
+//             if(nums[i-1]>nums[i]){
+//                 count++;
+//             }
+//        }
+//        if(nums[n-1]>nums[0]){
+//         count++;
+//         }
+//         if(count>1){
+//             return false;
+//         }
+//         return true;
+//     }
+// }
 
