@@ -233,3 +233,57 @@ public class leetcode {
 //     }
 // }
 
+
+                                // TWO NUMBERS WITH ODD OCCURENCES 
+
+// class Solution {
+//     public int[] twoOddNum(int Arr[], int N) {
+//         HashMap<Integer, Integer> h1 = new HashMap<>();
+//         for (int num : Arr) {
+//             h1.put(num, h1.getOrDefault(num, 0) + 1);
+//         }
+
+//         int[] arr = new int[2];
+//         int k=0;
+//         for (int num : h1.keySet()) {
+//             if (h1.get(num) % 2 != 0) {
+//                 arr[k++] = num;
+//                 if (k == 2) break;
+//             }
+//         }
+//         if (arr[0] < arr[1]) {
+//             int temp = arr[0];
+//             arr[0] = arr[1];
+//             arr[1] = temp;
+//         }
+//         return arr;
+//     }
+// }
+
+                                //  Count prime numbers till n.
+
+// class Solution { 
+//     public int countPrimes(int n) {
+//         int count = 0;
+//         boolean isprime[] = new boolean[n];
+//         if(n<=2){
+//             return 0;
+//         }
+//         for(int i=2;i<n;i++){
+//             isprime[i] = true;
+//         }
+//         for(int i=2;i*i<n;i++){
+//             if(isprime[i]){
+//                 for(int j = i*i;j<n;j+=i){
+//                     isprime[j] = false;
+//                 }
+//             }
+//         }
+//         for(int i=1;i<n;i++){
+//             if(isprime[i]==true){
+//                 count++;
+//             }
+//         }
+//         return count;
+//     }
+// }
