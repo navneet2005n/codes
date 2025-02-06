@@ -14,7 +14,9 @@ public class INTERFACES {
     // needs of interfaces ::
     // 1) multiple inheritance..
     // 2) total abstraction.. 
-    
+    //         Definition:: Total abstraction in Java means that a class is fully abstract, meaning it does not contain any 
+    // concrete (implemented) methods. This is achieved using an interface or an abstract class with 
+    // only abstract methods.
     // 1) All methods are public, abstract and without implementation..
     // 2) used to achieve total abstraction..
     // 3) variables in the interface are final, public and static 

@@ -1,4 +1,5 @@
-// import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Scanner;
 // public class array2 {
 //     public static void main(String args[]){
 //         Scanner sc= new Scanner(System.in);
@@ -101,6 +102,42 @@
 //         }
 //     }
     
+public class array{
+        public static int linearsearch(int n,int arr[],int target){
+                for(int i=0;i<arr.length;i++){
+                        if(arr[i]==target){
+                              return i;
+                        }
+                }
+                return -1;
+        }
 
-
+        public static int recursive_search(int n,int arr[],int target){
+                if(n == 0){
+                 return -1;
+                }
+                if(arr[n-1] == target){
+                 return n-1;
+                }
+                return recursive_search(n-1, arr, target);
+        }
+        public static void main(String args[]){
+                Scanner sc = new Scanner(System.in);
+                int n = sc.nextInt();
+                int arr[]= new int[n];
+                for(int i=0;i<arr.length;i++){
+                        arr[i] = sc.nextInt();
+                }
+                int target = sc.nextInt();
+                // int index = linearsearch(n, arr, target);
+                // System.out.println("The array is as follows:\n" + Arrays.toString(arr));
+                // if(index == -1){
+                //         System.out.println("Sorry element not found");
+                // }
+                // else{
+                //         System.out.println("Element is at index at: "+ index);
+                // }
+                System.out.println(recursive_search(n,arr,target));
+        }
+}
 

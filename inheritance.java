@@ -17,7 +17,8 @@
 // // hererichal inheritance ::: different derived classes from one base class(like dog and cat class from animal)
 // // hybrid inheritance ::: in this, there are different subclasses of a class and have differnet methods 
 // // mnultiple inheritance ::: in this type, one derived class inherits from two differnt base classes..
-// class Mammals extends Animal{
+
+// class Mammals extends Animal {
 //         int legs;
 //     }
 

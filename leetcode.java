@@ -1,4 +1,5 @@
-                  // removeNthFromEnd nth node from last node
+import java.util.*; 
+                        // removeNthFromEnd nth node from last node
 
 // class Solution {
 //     public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -182,34 +183,34 @@
 // }
 // }
 
-import java.util.HashSet;
-public class leetcode {
-    public static int gcd(int a, int b) {
-        HashSet<Integer> set1 = new HashSet<>();
-        HashSet<Integer> set2 = new HashSet<>();
-        for (int i = 1; i <= a; i++) {
-            if (a % i == 0) {
-                set1.add(i);
-            }
-        }
-        for (int i = 1; i <= b; i++){
-            if (b % i == 0 && set1.contains(i)) {
-                set2.add(i);
-            }
-        }
-        int max = 1;
-        for (int num : set2) {
-            if (num > max) {
-                max = num;
-            }
-        }
-        return max;
-    }
-    public static void main(String[] args) {
-        int a=36,b=48;
-        System.out.println(gcd(a, b));
-    }
-}
+// import java.util.HashSet;
+// public class leetcode {
+//     public static int gcd(int a, int b) {
+//         HashSet<Integer> set1 = new HashSet<>();
+//         HashSet<Integer> set2 = new HashSet<>();
+//         for (int i = 1; i <= a; i++) {
+//             if (a % i == 0) {
+//                 set1.add(i);
+//             }
+//         }
+//         for (int i = 1; i <= b; i++){
+//             if (b % i == 0 && set1.contains(i)) {
+//                 set2.add(i);
+//             }
+//         }
+//         int max = 1;
+//         for (int num : set2) {
+//             if (num > max) {
+//                 max = num;
+//             }
+//         }
+//         return max;
+//     }
+//     public static void main(String[] args) {
+//         int a=36,b=48;
+//         System.out.println(gcd(a, b));
+//     }
+// }
 
                         // Check if the array is sorted and rotated :::::
 
@@ -287,3 +288,148 @@ public class leetcode {
 //         return count;
 //     }
 // }
+
+// public class leetcode{
+
+                    //  brute force :::
+
+    // public static int storewater(ArrayList <Integer> l1){
+    //     int maxwater = 0;
+    //     for(int i=0;i<l1.size();i++){
+    //         for(int j=i+1;j<l1.size();j++){
+    //            int height = Math.min(l1.get(i), l1.get(j));
+    //            int width = j-i;
+    //            int water = height * width;
+    //             if(water>maxwater){
+    //                 maxwater = water;
+    //             }
+    //         }
+    //     }
+    //     return maxwater;
+    // }
+
+                                // two pointer approach ::
+
+//     public static int strwater(ArrayList <Integer>l1){
+//         int maxwater = 0;
+//         int lp = 0;
+//         int rp = l1.size()-1;
+//         while(lp<rp){
+//             int height = Math.min(l1.get(lp),l1.get(rp));
+//             int width = rp - lp;
+//             int currwater = height * width;
+//             if (currwater>maxwater) {
+//                     maxwater = currwater;
+//             }
+//             if(l1.get(lp)<l1.get(rp)){
+//                 lp++;
+//             }
+//             else{
+//                 rp--;
+//             }
+//         }
+//         return maxwater;
+//     }
+//    public static void main(String args[]){
+//         ArrayList <Integer> l1 = new ArrayList<>();
+//         // 1 8 6 2 5 4 8 3 7
+//         l1.add(1);
+//         l1.add(8);
+//         l1.add(6);
+//         l1.add(2);
+//         l1.add(5);
+//         l1.add(4);
+//         l1.add(8);
+//         l1.add(3);
+//         l1.add(7);
+//         // System.out.println(storewater(l1));
+//         System.out.println(strwater(l1));
+//         }
+// }.
+
+
+                                //  Pair sum  :::
+
+
+                                // brute force :::
+
+class leetcode{
+
+    // public static boolean pair_sum(ArrayList<Integer> l1,int sum){
+    //     for(int i=0;i<l1.size();i++){
+    //         for(int j=i+1;j<l1.size();j++){
+    //             if(l1.get(i)+l1.get(j)==sum){
+    //                 return true;
+    //             }
+    //         }
+    //     }
+    //     return false;
+    // }
+
+                        // two pointer approach :::
+
+        // public static boolean pairs(ArrayList<Integer>l1,int sum){
+        //     int lp = 0;
+        //     int rp = l1.size()-1;
+        //     while(lp<rp){
+        //         if(l1.get(lp)+l1.get(rp)==sum){
+        //             return true;
+        //         }
+        //         else if(l1.get(lp)+l1.get(rp)<sum){
+        //             lp++;
+        //         }
+        //         else{
+        //             rp--;
+        //         }
+        //     }
+        //     return false;
+        // }
+
+                    // 2  - pointer approach for the rotated and sorted arraylist    (0(n))
+
+        public static boolean pairs_sm(ArrayList<Integer>l1,int sum){
+            int pivot = -1;
+            int n  = l1.size();
+            for(int i = 0;i<l1.size();i++){
+                if(l1.get(i)>l1.get(i+1)) {
+                    pivot = i;
+                    break;
+                }
+            }
+            int lp = pivot+1;
+            int rp = pivot;
+            while (lp!=rp) {
+                if(l1.get(lp)+l1.get(rp)==sum){
+                    return true;
+                }
+                else if(l1.get(lp)+l1.get(rp)<sum){
+                    lp = (lp+1) % n;
+                }
+                else{
+                    rp = (rp+n-1)%n;
+                }
+            }
+            return false;
+        }
+    public static void main(String args[]){
+        // ArrayList<Integer> l1 = new ArrayList<>();
+        // l1.add(1);
+        // l1.add(2);
+        // l1.add(3);
+        // l1.add(4);
+        // l1.add(5);
+        // l1.add(6);
+        // int sum = 56;
+        // System.out.println(pair_sum(l1, sum));
+        // System.out.println(pairs(l1, sum));
+        ArrayList <Integer> l2 = new ArrayList<>();
+        l2.add(11);
+        l2.add(15);
+        l2.add(6);
+        l2.add(8);
+        l2.add(9);
+        l2.add(10);
+        int sum = 56;
+        System.out.println(pairs_sm(l2, sum));
+    }
+}
