@@ -17,12 +17,12 @@ public class collections {
     //     System.out.println();
     // }
 
+                                        // Count Max frequencies :::
 
     public static int findMostFrequentElement(int arr[]) {
         HashMap<Integer, Integer> h1 = new HashMap<>();
         int maxKey = arr[0];
         int maxCount = 0;
-        
         for (int num : arr) {
             if (h1.containsKey(num)) {
                 h1.put(num, h1.get(num) + 1);
