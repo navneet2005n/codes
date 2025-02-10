@@ -175,7 +175,7 @@ public class linkedlist {
     // }
     
     // public boolean checkpalindrome(){
-    //     if(head == null || head.next == null){
+    //     if(head == null && head.next == null){
     //         return true;
     //     }
     //     Node mid_el = findmid(head);
