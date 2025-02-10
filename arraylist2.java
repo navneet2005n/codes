@@ -10,6 +10,7 @@ public class arraylist2 {
         }
         return max;
     }
+    
     public static void swap(ArrayList<Integer>l1,int index1,int index2){
         for(int i=0;i<l1.size();i++){
             int temp = l1.get(index1);
