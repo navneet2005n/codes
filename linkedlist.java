@@ -328,7 +328,58 @@ public class linkedlist {
 }
 
 
+//              CountNodesinLoop testpad question :
 
+// class Result {
+//     static int loopInList(Node head) {
+//         if (head == null) return 0;  
+//         Node slow = head;
+//         Node fast = head;
+//         while (fast != null && fast.next != null) {
+//             slow = slow.next;
+//             fast = fast.next.next;
+//             if (slow == fast) { 
+//                 return countloopnodes(slow);
+//             }
+//         }
+//         return 0;
+//     }
+//     static int countloopnodes(Node meetingPoint) {
+//         Node temp = meetingPoint;
+//         int count = 1;
+//         while (temp.next != meetingPoint) {
+//             count++;
+//             temp = temp.next;
+//         }
+//         return count;
+//     }
+// }
 
+    //  Insert in a sorted circular linked list ::::::
+
+// class Result {
+//     static LinkList insertSorted(LinkList head, int data) {
+//     LinkList newNode = new LinkList(data);
+//      if (head == null) {
+//         newNode.next = newNode; 
+//         return newNode;
+//       }
+//       LinkList curr = head;
+//        if (data < head.data) {
+//         while (curr.next != head) {
+//           curr = curr.next;
+//         }
+//         curr.next = newNode;
+//         newNode.next = head;
+//         return newNode;  
+//       }
+//       while (curr.next != head && curr.next.data < data) {
+//         curr = curr.next;
+//       }
+//       newNode.next = curr.next;
+//       curr.next = newNode;
+//       return head;  
+//     }
+//   }
 
 
