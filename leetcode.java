@@ -77,7 +77,7 @@ import java.util.*;
 // }
 
 
-                                         // Set Matrix Zeroes :::::
+                           // Set Matrix Zeroes :::::
 
 // class Solution {
 //     public void setZeroes(int[][] matrix) {
@@ -109,7 +109,7 @@ import java.util.*;
 // }
 
 
-// FIND MINIMUM OF THE SORTED AND ROTATED ARRAY :::
+                    // FIND MINIMUM OF THE SORTED AND ROTATED ARRAY :::
 
 // class Solution {
 //     public int findMin(int[] nums){
@@ -124,7 +124,7 @@ import java.util.*;
 //         // }
 //         // return min;
 
-// // binary search
+                                // binary search
 
 //         int start = 0;
 //         int end = nums.length - 1;
@@ -385,7 +385,7 @@ class leetcode{
         //     return false;
         // }
 
-                    // 2  - pointer approach for the rotated and sorted arraylist    (0(n))
+             // 2  - pointer approach for the rotated and sorted arraylist    (0(n))
 
         public static boolean pairs_sm(ArrayList<Integer>l1,int sum){
             int pivot = -1;
@@ -433,3 +433,52 @@ class leetcode{
         System.out.println(pairs_sm(l2, sum));
     }
 }
+
+
+                            // MAXSUM OF THE DIGITS OF THE ARRAY 
+// class Solution {
+//     public int maximumSum(int[] nums) {
+//         HashMap<Integer, Integer> h1 = new HashMap<>();
+//         int maxSum = -1; 
+//         for (int i = 0; i < nums.length; i++) {
+//             int sum = 0;
+//             int num = nums[i];
+//             while (num != 0) {
+//                 int rem = num % 10;
+//                 sum += rem;
+//                 num /= 10;
+//             }
+//             if (h1.containsKey(sum)){
+//                 maxSum = Math.max(maxSum, h1.get(sum) + nums[i]);
+//                 h1.put(sum, Math.max(h1.get(sum), nums[i])); 
+//             } else {
+//                 h1.put(sum, nums[i]);
+//             }
+//         }
+//         return maxSum;
+//     }
+// }
+
+                            //  MAXIMUM FREQUENCY ELEMENTS :::
+
+// class Solution {
+//     public int maxFrequencyElements(int[] nums) {
+//         HashMap<Integer,Integer> h1 = new HashMap<>();
+//         for(int num:nums){
+//             h1.put(num,h1.getOrDefault(num,0)+1);
+//         }
+//         int max = 0;
+//         int c = 0;
+//         for(int i=0;i<nums.length;i++){
+//             if(h1.get(nums[i]) > max){
+//                 max = h1.get(nums[i]);
+//             }
+//         }
+//        for (int freq : h1.values()) {
+//             if (freq == max) {
+//                 c++; 
+//             }
+//         }
+//         return c * max;
+//     }
+// }
