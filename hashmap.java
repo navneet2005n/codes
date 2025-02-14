@@ -2,7 +2,7 @@ import java.util.*;
 class Main {
     public static int maxfreq(int arr[]){
         int max = 0;
-        int maxcount = arr[0];
+        int maxcount = 0;
         HashMap <Integer,Integer> h1 = new HashMap<>();
         for(int num : arr){
             h1.put(num,h1.getOrDefault(num,0)+1);
