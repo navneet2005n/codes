@@ -1,4 +1,4 @@
-// public class second_max {
+// import java.util.*;
 // class Main {
 //     public static void main(String[] args) {
 //         Scanner sc = new Scanner(System.in);
@@ -20,5 +20,4 @@
 //         }
 //         System.out.println((secondMax == Integer.MIN_VALUE) ? 0 : secondMax);
 //     }
-// }
 // }

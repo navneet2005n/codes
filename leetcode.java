@@ -482,3 +482,48 @@ class leetcode{
 //         return c * max;
 //     }
 // }
+
+
+                        // ROTATE LINKED LIST :::
+
+
+// class Solution {
+//     public ListNode rotateRight(ListNode head, int k) {
+//         if (head == null || head.next == null || k == 0) {
+//             return head;
+//         }
+//         int cnt = 0;
+//         ListNode temp = head;
+//         while (temp != null) {
+//             cnt++;
+//             temp = temp.next;
+//         }
+//         int arr[] = new int[cnt];
+//         int c = 0;
+//         ListNode temp1 = head;
+//         while (temp1 != null) {
+//             arr[c++] = temp1.val;
+//             temp1 = temp1.next;
+//         }
+//         k %= cnt;
+//         reverse(0, cnt - 1, arr);
+//         reverse(0, k - 1, arr);
+//         reverse(k, cnt - 1, arr);
+//         ListNode newHead = new ListNode(arr[0]);
+//         ListNode curr = newHead;
+//         for (int i = 1; i < cnt; i++) {
+//             curr.next = new ListNode(arr[i]);
+//             curr = curr.next;
+//         }
+//         return newHead;
+//     }
+//     public static void reverse(int start, int end, int arr[]) {
+//         while (start < end) {
+//             int t = arr[start];
+//             arr[start] = arr[end];
+//             arr[end] = t;
+//             start++;
+//             end--;
+//         }
+//     }
+// }
