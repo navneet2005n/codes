@@ -2,15 +2,15 @@ import java.util.Scanner;
 public class selection_sort {
     public static void sel_sort(int arr[],int n){
         for(int i=0;i<n-1;i++){
-            int min_index=i;
+            int min_index = i;
             for(int j=i+1;j<n;j++){
                 if(arr[j]<arr[min_index]){
-                    min_index=j;
+                    min_index = j;
                 }
             }
             int temp = arr[i];
-            arr[i]=arr[min_index];
-            arr[min_index]=temp;
+            arr[i] = arr[min_index];
+            arr[min_index] = temp;
         }
     }
     public static void main(String args[]){
