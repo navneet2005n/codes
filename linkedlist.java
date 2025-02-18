@@ -382,4 +382,27 @@ public class linkedlist {
 //     }
 //   }
 
+                        // Remove Nth node from end of list ::::::
 
+// class Solution {
+//     public ListNode removeNthFromEnd(ListNode head, int n) {
+//         int len = 0;
+//         ListNode temp = head;
+//         while (temp != null) {
+//             len++;
+//             temp = temp.next;
+//         }
+//         if (len == n) {
+//             return head.next;
+//         }
+//         int i = 0;
+//         temp = head;
+//         int index = len - n - 1; 
+//         while(i < index) {
+//             i++;
+//             temp = temp.next;
+//         }
+//         temp.next = temp.next.next;
+//         return head;
+//     }
+// }
