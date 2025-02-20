@@ -240,7 +240,7 @@ public class linkedlist {
     //         fast=fast.next;
     //     }
     //     // remove cycle:
-    //     prev.next=null;
+    //     prev.next = null;
     // }
 
     public static Node addele(Node head,int k,Node element){

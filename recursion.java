@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class recursion {
     // public static void printnamentimes(int i,int n){
@@ -14,6 +15,13 @@ public class recursion {
     //     }
     //     print1ton(i-1,n);
     //     System.out.println(i);
+    // }
+    // public static void oneton(int n){
+    //     if(n == 0){
+    //         return;
+    //     }
+    //     oneton(n-1);
+    //     System.out.print(n+" ");
     // }
 
     // public static void printnto1(int n){
@@ -66,9 +74,93 @@ public class recursion {
     //     return palindrome(i + 1, n, str); 
     // }
     
-   
+                    // SubSequences of an array ::::
+
+    //  public static void printF(int ind, ArrayList<Integer> a1, int arr[], int n) {
+    //     if (ind == n) {
+    //         if (a1.isEmpty()) {
+    //             System.out.println("{}"); 
+    //         } else {
+    //             for (int num : a1) {
+    //                 System.out.print(num + " ");
+    //             }
+    //             System.out.println();
+    //         }
+    //         return;
+    //     }
+    //     a1.add(arr[ind]);
+    //     printF(ind + 1, a1, arr, n);
+    //     a1.remove(a1.size() - 1);
+    //     printF(ind + 1, a1, arr, n);
+    // }
+ 
+                    //  SUM OF DIGITS ::::
+    
+    public static int sumofdigits(int n){
+        if(n == 0){
+            return 0;
+        }
+        return n % 10 + sumofdigits(n / 10);
+    }
+
+                        //  PRODUCT OF DIGITS :::
+                        
+    public static int prodofdig(int n){
+        if(n % 10  == n){
+            return n;
+        }
+        return n % 10 * prodofdig(n / 10);
+    }
+
+
+                    //  REVERSE A NUMBER :::
+
+    public static int rev(int n, int reversed) {
+        if (n == 0) {
+            return reversed;
+        }
+        return rev(n / 10, reversed * 10 + n % 10);
+    }
+
+                    //  COUNT ZEROES :::
+
+    public static int cntzeros(int n, int cnt){
+        if(n == 0){
+             return cnt;
+        }
+        if(n % 10 == 0){
+         cnt++;
+        }
+        return cntzeros(n/10 , cnt);
+    }
+
+                    //  COUNT DIGITS :::
+
+     public static int cntdig(int n, int cn){
+        if(n == 0){
+        return cn;
+        }
+    return cntdig(n/10 , ++cn);  
+    }
+                    
+        //  COUNT STEPS :::
+
+    public static int cntsteps(int n, int cnt){
+        if(n == 0){
+        return cnt;
+        }
+        if(n % 2 == 0){
+         return cntsteps(n/2 , ++cnt);
+     }
+        else if(n % 2 != 0){
+             return cntsteps(n-1 , ++cnt);
+        }
+        return 0;
+    }   
+    
     public static void main(String args[]){
         Scanner sc =new Scanner(System.in);
+        // int arr[] = {1,2,3};
         // int n = sc.nextInt();
         // printnamentimes(1,n);
         // print1ton(n, n);
@@ -85,8 +177,19 @@ public class recursion {
         //     System.out.print(arr[i] + " ");
         // }
 
-		String str = "hooh";
-		int n = str.length();
+		// String str = "hooh";
+		// int n = str.length();
 		// System.out.print(palindrome(0,n,str));
+
+
+        // ArrayList<Integer> a1 = new ArrayList<>();
+        // printF(0, a1, arr, arr.length);
+        int n = 14;
+        System.out.println(sumofdigits(n));
+        System.out.println(prodofdig(n));
+        System.out.println(rev(n,0));
+        System.out.println(cntzeros(n,0));
+        System.out.println(cntdig(n,0));
+        System.out.println(cntsteps(n,0));
     }
 }
