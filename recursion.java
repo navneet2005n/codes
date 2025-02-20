@@ -184,7 +184,7 @@ public class recursion {
 
         // SEARCH AN ELEMENT (multiple indexes) IN AN ARRAY :::
 
-        public static ArrayList allind(int arr[],int el,int i,ArrayList<Integer>l1){
+    public static ArrayList allind(int arr[],int el,int i,ArrayList<Integer>l1){
             if(i == arr.length){
                 return l1;
             }
@@ -194,11 +194,33 @@ public class recursion {
             return allind(arr,el,i+1,l1);
         }
 
-    //  MAIN FUNCTION :::
 
+        // Rotated binary search :::
+
+        public static int srch(int arr[],int el,int s,int e){
+            if(s > e){
+                return -1;
+            }
+            int mid = s + (e-s)/2;
+            if(arr[mid] == el){
+                return mid;
+            }
+            if(arr[s] <= arr[mid]){
+                if(el >= arr[s] && el <= arr[mid]){
+                    return srch(arr,el,s,mid-1);
+                }
+                return srch(arr,el,mid+1,e);
+            }
+            if(el >= arr[mid] && el <= arr[e]){
+                return srch(arr,el,mid+1,e);
+            }
+            return srch(arr,el,s,mid-1);
+        }
+
+    //  MAIN FUNCTION :::
     public static void main(String args[]){
         Scanner sc =new Scanner(System.in);
-        int arr[]  = {3,4,4,5,7};
+        int arr[]  = {3,4,5,7,8,9,10,1,2};
         // int n = sc.nextInt();
         // printnamentimes(1,n);
         // print1ton(n, n);
@@ -231,8 +253,10 @@ public class recursion {
         // System.out.println(cntsteps(n,0));
         // System.out.println(sorornot(arr,1));
         // System.out.println(srch(arr,3,0));
-        ArrayList<Integer> k1 = new ArrayList<>();
-        System.out.print(allind(arr,4,0,k1));
 
+        // ArrayList<Integer> k1 = new ArrayList<>();
+        // System.out.print(allind(arr,4,0,k1));
+
+        System.out.println(srch(arr,2,0,arr.length-1));
     }
 }
