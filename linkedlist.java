@@ -406,3 +406,37 @@ public class linkedlist {
 //         return head;
 //     }
 // }
+
+
+// Delete in a Doubly Linked List :::::::
+
+   // class Solution {
+                            //     public Node deleteNode(Node head, int x) {
+                            //         if(head == null){
+                            //             return null;
+                            //         }
+                            //         if(x == 1){
+                            //            head = head.next;
+                            //             if (head != null) {
+                            //                 head.prev = null;
+                            //             }
+                            //             return head;
+                            //         }
+                                    
+                            //         Node prev = null;
+                            //         int i = 1;
+                            //         Node temp = head;
+                            //         while(i < x){
+                            //             prev = temp;
+                            //             temp = temp.next;   
+                            //             i++;
+                            //         }
+                            //         prev.next = temp.next;
+                            //          if (temp.next != null) {
+                            //             temp.next.prev = prev;
+                            //         }
+                            //         return head;
+                            //     }
+                            // }
+                            
+                       

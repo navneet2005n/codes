@@ -157,10 +157,48 @@ public class recursion {
         }
         return 0;
     }   
-    
+
+    // ARRAY IS SORTED OR NOT :::
+
+    public static boolean sorornot(int arr[] , int i){
+        if(i >= arr.length){
+            return true;
+        }
+        if( arr[i-1] > arr[i]){
+            return false;
+        }
+        return sorornot(arr,i+1);
+    }    
+
+    // SEARCH AN ELEMENT IN AN ARRAY :::
+
+    public static int srch(int arr[],int el,int i){
+        if(i == arr.length){
+            return -1;
+        }
+        if(arr[i] == el){
+            return i;
+        }
+        return srch(arr,el,i+1);
+    }
+
+        // SEARCH AN ELEMENT (multiple indexes) IN AN ARRAY :::
+
+        public static ArrayList allind(int arr[],int el,int i,ArrayList<Integer>l1){
+            if(i == arr.length){
+                return l1;
+            }
+            if(arr[i] == el){
+                l1.add(i);
+            }
+            return allind(arr,el,i+1,l1);
+        }
+
+    //  MAIN FUNCTION :::
+
     public static void main(String args[]){
         Scanner sc =new Scanner(System.in);
-        // int arr[] = {1,2,3};
+        int arr[]  = {3,4,4,5,7};
         // int n = sc.nextInt();
         // printnamentimes(1,n);
         // print1ton(n, n);
@@ -184,12 +222,17 @@ public class recursion {
 
         // ArrayList<Integer> a1 = new ArrayList<>();
         // printF(0, a1, arr, arr.length);
-        int n = 14;
-        System.out.println(sumofdigits(n));
-        System.out.println(prodofdig(n));
-        System.out.println(rev(n,0));
-        System.out.println(cntzeros(n,0));
-        System.out.println(cntdig(n,0));
-        System.out.println(cntsteps(n,0));
+        // int n = 14;
+        // System.out.println(sumofdigits(n));
+        // System.out.println(prodofdig(n));
+        // System.out.println(rev(n,0));
+        // System.out.println(cntzeros(n,0));
+        // System.out.println(cntdig(n,0));
+        // System.out.println(cntsteps(n,0));
+        // System.out.println(sorornot(arr,1));
+        // System.out.println(srch(arr,3,0));
+        ArrayList<Integer> k1 = new ArrayList<>();
+        System.out.print(allind(arr,4,0,k1));
+
     }
 }
