@@ -408,17 +408,16 @@ public class linkedlist {
 // }
 
 
-// Delete in a Doubly Linked List :::::::
+                            // Delete in a Doubly Linked List :::::::
 
-   // class Solution {
-                            //     public Node deleteNode(Node head, int x) {
-                            //         if(head == null){
-                            //             return null;
-                            //         }
-                            //         if(x == 1){
-                            //            head = head.next;
-                            //             if (head != null) {
-                            //                 head.prev = null;
+ //     public Node deleteNode(Node head, int x) {
+    //         if(head == null){
+ //             return null;
+  //         }
+//         if(x == 1){
+//            head = head.next;
+//             if (head != null) {
+//                 head.prev = null;
                             //             }
                             //             return head;
                             //         }
@@ -438,5 +437,36 @@ public class linkedlist {
                             //         return head;
                             //     }
                             // }
-                            
-                       
+                
+
+
+                           
+            //  Delete all occurrences of a given key in a doubly linked list ::::::
+
+
+// class Solution {
+//     static Node deleteAllOccurOfX(Node head, int x) {
+//         if (head == null) return null; 
+//         Node temp = head;
+//         while (head != null && head.data == x) {
+//             head = head.next;
+//             if (head != null) {
+//                 head.prev = null; 
+//             }
+//         }
+//         temp = head;
+//         Node tem = null;
+//         while (temp != null) {
+//             tem = temp;
+//             temp = temp.next;
+//             if (temp != null && temp.data == x) { 
+//                 tem.next = temp.next;  
+//                 if (temp.next != null) {
+//                     temp.next.prev = tem;
+//                 }
+//                 temp = tem; 
+//             }
+//     }
+//     return head;
+// }
+// }

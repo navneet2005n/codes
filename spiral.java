@@ -28,6 +28,8 @@ public class spiral {
         }
     }
 
+                    // Another spiral way to solve the same problem ::::
+
     public static void spiral2(int matrix[][]){
         int strrow = 0;
         int strcol = 0;
