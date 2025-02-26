@@ -232,12 +232,12 @@ public class linkedlist {
     //         return;
     //     }
     //     // find meeting point
-    //     slow=head;
-    //     Node prev=null; //last node
-    //     while(slow!=fast){
-    //         prev=fast;
-    //         slow=slow.next;
-    //         fast=fast.next;
+    //     slow = head;
+    //     Node prev = null; //last node
+    //     while(slow != fast){
+    //         prev = fast;
+    //         slow = slow.next;
+    //         fast = fast.next;
     //     }
     //     // remove cycle:
     //     prev.next = null;

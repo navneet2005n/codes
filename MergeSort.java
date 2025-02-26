@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 public class MergeSort {
     public static int[] mergeSort(int arr[]) {
         if (arr.length == 1) {
@@ -29,10 +29,20 @@ public class MergeSort {
         return result;
     }
     public static void main(String args[]) {
-        int arr[] = {5, 4, 3, 2, 1};
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the size of array: ");
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        System.out.println("Enter the elements of the array: ");
+        for(int i=0;i<arr.length;i++){
+            arr[i] = sc.nextInt();
+        }
+        System.out.println("Array before sorting: ");
+        System.out.println(Arrays.toString(arr));
         // it is creating a copy of real array not doing it on real array....
         mergeSort(arr);   // this will not sort the array as it is not doing it on real array
         arr = mergeSort(arr);  // this will sort the array as it is doing it on real array
+        System.out.println("\nArray after sorting: ");
         System.out.println(Arrays.toString(arr));
     }
 }
