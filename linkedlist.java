@@ -492,3 +492,41 @@ public class linkedlist {
 //         return dummy.next;
 //     }
 // }
+
+//                      (4) MERGE TWO SORTED LINKED LISTS ::::::
+
+// class Solution {
+//     public ListNode mergeKLists(ListNode[] lists) {
+//         if (lists == null || lists.length == 0) {
+//             return null;
+//         }
+//         int cnt = 0;
+//         for (ListNode node : lists) {
+//             ListNode temp = node;
+//             while (temp != null) {
+//                 cnt++;
+//                 temp = temp.next;
+//             }
+//         }
+//         if (cnt == 0) {
+//             return null;
+//         }
+//         int[] arr = new int[cnt];
+//         int i = 0;
+//         for (ListNode node : lists) {
+//             ListNode temp = node;
+//             while (temp != null) {
+//                 arr[i++] = temp.val;
+//                 temp = temp.next;
+//             }
+//         }
+//         Arrays.sort(arr);
+//         ListNode dummy = new ListNode(0);
+//         ListNode curr = dummy;
+//         for (int n : arr) {
+//             curr.next = new ListNode(n);
+//             curr = curr.next;
+//         }
+//         return dummy.next;
+//     }
+// }
