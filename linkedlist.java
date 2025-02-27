@@ -268,6 +268,7 @@ public class linkedlist {
         return head;
     }
 
+
     public static Node insertbefore(Node head,Node element,Node x){
         Node temp=head;
         Node prev=null;
@@ -525,6 +526,61 @@ public class linkedlist {
 //         ListNode curr = dummy;
 //         for (int n : arr) {
 //             curr.next = new ListNode(n);
+//             curr = curr.next;
+//         }
+//         return dummy.next;
+//     }
+// }
+
+//                     (5)    Remove Nodes From Linked List
+
+
+// class Solution {
+//     public ListNode removeNodes(ListNode head) {
+//         ListNode temp = head;
+//         int cnt = 0;
+//         int i = 0;
+//         while (temp != null) {
+//             cnt++;
+//             temp = temp.next;
+//         }        
+//         int arr[] = new int[cnt];
+//         temp = head;
+//         while (temp != null) {
+//             arr[i++] = temp.val;
+//             temp = temp.next;
+//         }
+//         int c = 0;
+//          for (int f = 0; f < arr.length; f++) {  
+//             boolean flag = true;
+//             for (int j = f + 1; j < arr.length; j++) {
+//                 if (arr[f] < arr[j]) {
+//                     flag = false;
+//                     break;
+//                 }
+//             }
+//             if (flag) {
+//                 c++;
+//             }
+//         }
+//         int arr2[] = new int[c];
+//         int index = 0; 
+//         for (int g = 0; g < arr.length; g++) { 
+//             boolean flag = true;
+//             for (int k = g + 1; k < arr.length; k++) {
+//                 if (arr[g] < arr[k]) {
+//                     flag = false;
+//                     break;
+//                 }
+//             }
+//             if (flag) {
+//                 arr2[index++] = arr[g]; 
+//             }
+//         }
+//         ListNode dummy = new ListNode(0);
+//         ListNode curr = dummy;
+//         for (int num : arr2) {
+//             curr.next = new ListNode(num);
 //             curr = curr.next;
 //         }
 //         return dummy.next;
