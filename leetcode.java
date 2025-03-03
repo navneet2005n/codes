@@ -545,3 +545,129 @@ class leetcode{
 //         return i; 
 //     }
 // }
+
+                                //  ADD TWO NUMBERS :::
+
+
+//  class Solution {
+//     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+//         l1 = rev(l1);
+//         l2 = rev(l2);
+//         ListNode dummy = new ListNode(0);
+//         ListNode curr = dummy;
+//         ListNode temp1 = l1;
+//         ListNode temp2 = l2;
+//         int carry = 0;
+//         while(temp1 != null|| temp2!=null || carry > 0){
+//             int val1 = (temp1 != null) ? temp1.val : 0;
+//             int val2 = (temp2 != null) ? temp2.val : 0;
+//             int sum = val1 + val2 + carry;
+//             carry = sum/10;
+//             curr.next = new ListNode(sum % 10);
+//             curr = curr.next;
+//             if(temp1!=null) {temp1=temp1.next;}
+//             if(temp2!=null) {temp2=temp2.next;}
+//         }
+//         return rev(dummy.next);
+//     }
+//     private ListNode rev(ListNode head){
+//         ListNode curr = head;
+//         ListNode prev = null;
+//         ListNode next;
+//         while(curr != null){
+//             next = curr.next;
+//             curr.next = prev;
+//             prev = curr;
+//             curr = next;
+//         }
+//         return prev;
+//     }
+// }
+
+
+                    //  REORDER LINKED LIST :::
+
+
+//  class Solution {
+//     public ListNode md(ListNode head){
+//         ListNode s = head;
+//         ListNode f = head;
+//         while(f!=null && f.next!=null){
+//             s = s.next;
+//             f = f.next.next;
+//         }
+//         return s;
+//     }
+//     public ListNode rv(ListNode head){
+//         if(head == null){
+//             return head;
+//         }
+//         ListNode prev = null;
+//         ListNode curr = head;
+//         ListNode next;
+//         while(curr != null){
+//             next = curr.next;
+//             curr.next = prev;
+//             prev = curr;
+//             curr = next;
+//         }
+//         return prev;
+//     }
+
+//     public void reorderList(ListNode head) {
+//         if(head == null || head.next == null){
+//             return;
+//         }
+        
+//         // rearrange 
+
+//         ListNode mid = md(head);
+//         ListNode hs = rv(mid);
+//         ListNode hf = head;
+//         while(hf != null && hs != null){
+//             ListNode temp = hf.next;
+//             hf.next = hs;
+//             hf = temp;
+
+//             temp = hs.next;
+//             hs.next = hf;
+//             hs = temp;
+//         }
+//         if(hf != null){
+//             hf.next = null;
+//         }
+//     }
+// }
+
+
+// class Solution {
+//     public int countDigitOne(int n) {
+//         if (n == 0) {
+//             return 0;
+//         }
+//         int cnt = 0;
+//         for (int i = 1; i <= n; i++) {
+//             int num = i;
+//             while (num > 0) {
+//                 if (num % 10 == 1) {
+//                     cnt++;
+//                 }
+//                 num /= 10;
+//             }
+//         }
+//         return cnt;
+//     }
+// }
+
+                                // COUNT DIGIT ONE :::
+
+// class Solution {
+//     public int countDigitOne(int n) {
+//         int count = 0;
+//         for (int i = 1; i <= n; i *= 10) { 
+//             int d = i * 10;
+//             count += (n / d) * i + Math.min(Math.max(n % d - i + 1, 0), i);
+//         }
+//         return count;
+//     }
+// }
