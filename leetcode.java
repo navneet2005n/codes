@@ -671,3 +671,47 @@ class leetcode{
 //         return count;
 //     }
 // }
+
+                        //  Angle between the hour and minute hand :::
+
+// class Solution {
+//     public double angleClock(int hour, int minutes) {
+//         double angle = Math.abs(30 * hour - 5.5 * minutes);
+//         return Math.min(angle, 360 - angle);
+//     }
+// }
+
+                        // Next Greater Node In Linked List
+
+// INPUT : [2,1,5]
+// OUTPUT : [5,5,0]
+
+// class Solution {
+//     public int[] nextLargerNodes(ListNode head) {
+//         ListNode temp = head;
+//         int cnt = 0;
+//         while (temp != null) {
+//             cnt++;
+//             temp = temp.next;
+//         }
+//         int[] arr = new int[cnt];
+//         temp = head;
+//         int k = 0;
+//         while (temp != null) {
+//             arr[k++] = temp.val;
+//             temp = temp.next;
+//         }
+//         for (int i = 0; i < arr.length; i++) {
+//             int nextGreater = 0;
+//             for (int j = i + 1; j < arr.length; j++) {
+//                 if (arr[j] > arr[i]) {  
+//                     nextGreater = arr[j]; 
+//                     break;
+//                 }
+//             }
+//             arr[i] = nextGreater;  
+//         }
+//         return arr;
+//     }
+// }
+

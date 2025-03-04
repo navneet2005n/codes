@@ -586,3 +586,28 @@ public class linkedlist {
 //         return dummy.next;
 //     }
 // }
+
+//                      (6)    Remove Duplicates from Sorted LinkedList ::::::    
+
+// class Solution {
+//     Node removeDuplicates(Node head) {
+//         if (head == null) return null;
+//         HashSet<Integer> seen = new HashSet<>();
+//         Node curr = head;
+//         Node prev = null;
+//         while (curr != null) {
+//             if (seen.contains(curr.data)) {
+//                 // Remove duplicate
+//                 prev.next = curr.next;
+//             } 
+//              else {
+//                 seen.add(curr.data);
+//                 prev = curr;
+//             }
+//             curr = curr.next;
+//         }
+//         return head;
+//     }
+// }
+
+
