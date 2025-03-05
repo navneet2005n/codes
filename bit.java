@@ -64,5 +64,36 @@ public class bit {
         System.out.println(cntsetbits(num));
     }
 }
+//                                      ithbit of a number :::
 
+// public class Main
+// {
+//     public static int ithbit(int n,int cnt){
+//         int i = 0;
+//         while(i != cnt-1){
+//            n =  n >> 1;
+//             i++;
+//         }
+//         return (n&1);
+//     }
 
+//  public static int ithbit2(int n,int cnt){
+//     n = n & (1 << (cnt-1));
+//     return (n != 0) ? 1 : 0;
+// }
+
+ 
+// public static int setithbit(int n, int cnt) {
+//     return n ^ (1 << (cnt - 1));
+// }
+
+// 	public static void main(String[] args) {
+//     int a = 14;
+//     int cnt  = 1;
+//     System.out.print(ithbit(a,cnt));
+//     System.out.print(ithbit2(a,cnt));
+//     System.out.println();
+//     a = setithbit(a,cnt);
+//     System.out.print(ithbit2(a,cnt));
+// 	}
+// }
