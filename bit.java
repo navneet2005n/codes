@@ -82,7 +82,8 @@ public class bit {
 //     return (n != 0) ? 1 : 0;
 // }
 
- 
+                    //        Set ithbit of a number :::
+
 // public static int setithbit(int n, int cnt) {
 //     return n ^ (1 << (cnt - 1));
 // }
@@ -95,5 +96,60 @@ public class bit {
 //     System.out.println();
 //     a = setithbit(a,cnt);
 //     System.out.print(ithbit2(a,cnt));
+// 	}
+// }
+
+
+                        // Full code of kunal video 
+                        
+// public class Main
+// {
+//     public static int ithbit(int n,int cnt){
+//         int i = 0;
+//         while(i != cnt-1){
+//           n =  n >> 1;
+//             i++;
+//         }
+//         return (n&1);
+//     }
+    
+//     public static int ithbit2(int n,int cnt){
+//         n = n & (1 << (cnt-1));
+//         return (n != 0) ? 1 : 0;
+//     }
+    
+//     public static int setithbit1(int n, int cnt) {
+//             return n | (1 << (cnt - 1));
+//     }
+    
+//      public static int setithbit0(int n, int cnt) {
+//             return n &~ (1 << (cnt - 1));
+//     }
+    
+    
+//     public static int setithbit(int n, int cnt) {
+//             return n ^ (1 << (cnt - 1));
+//     }
+    
+// 	public static void main(String[] args) {
+//     int a = 4;
+//     int b = 6;
+//     int c = 7;
+//     int cnt = 3;
+//     // System.out.print(ithbit(a,cnt));
+//     // System.out.println();
+//     // // setithbit(a,cnt);
+//     // System.out.print(ithbit(a,cnt));
+//     System.out.print(ithbit2(a,cnt));
+//     System.out.println();
+//     a = setithbit1(a,cnt);
+//     System.out.print(ithbit2(a,cnt));
+//     System.out.println();
+//     b = setithbit0(b,cnt);
+//     System.out.print(ithbit2(b,cnt));
+//     System.out.println();
+//     c = setithbit(c,cnt);
+//     System.out.print(ithbit2(c,cnt));
+
 // 	}
 // }
