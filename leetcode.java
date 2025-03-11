@@ -715,3 +715,48 @@ class leetcode{
 //     }
 // }
 
+
+                        //  Remove Zero Sum Consecutive Nodes from Linked List  :::
+                        
+// class Solution {
+//     public ListNode removeZeroSumSublists(ListNode head) {
+//         ListNode dummy = new ListNode(0);
+//         dummy.next = head;
+//         ListNode start = dummy;
+//         while (start != null) {
+//             int sum = 0;
+//             ListNode end = start.next;
+//             while (end != null) {
+//                 sum += end.val;
+//                 if (sum == 0) {
+//                     start.next = end.next; 
+//                 }
+//                 end = end.next;
+//             }
+//             start = start.next;
+//         }
+//         return dummy.next;
+//     }
+// }
+
+                        //  FInd the closest k elements to the given number :::
+
+// class Solution {
+//     public List<Integer> findClosestElements(int[] arr, int k, int x) {
+//         List<Integer> result = new ArrayList<>();
+//         int left = 0;
+//         int right = arr.length-1;
+//         while(right-left >= k){
+//             if(Math.abs(arr[left] - x) > Math.abs(arr[right] - x)){
+//                 left++;
+//             }
+//             else{
+//                 right--;
+//             }
+//         }
+//         for(int i=left; i<=right; i++){
+//             result.add(arr[i]);
+//         }
+//         return result;
+//     }
+// }
