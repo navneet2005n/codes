@@ -760,3 +760,101 @@ class leetcode{
 //         return result;
 //     }
 // }
+
+
+
+ 
+//                              //  SWAP NODES IN PAIRS :::
+
+// class Solution {
+//     public ListNode swapPairs(ListNode head) {
+//       if(head == null || head.next == null){
+//         return head;
+//       }
+//       ListNode temp = head;
+//       int cnt = 0;
+//       while(temp != null){
+//         cnt++;
+//         temp = temp.next;
+//       }
+//       int arr[] = new int[cnt];
+//       temp = head;
+//       int j = 0;
+//       while(temp != null){
+//         arr[j++] = temp.val;
+//         temp = temp.next;
+//       }
+//       for(int i=1;i<arr.length;i+=2){
+//         int temp1 = arr[i];
+//         arr[i] = arr[i-1];
+//         arr[i-1] = temp1;
+//       }
+//       ListNode dummy = new ListNode(0);
+//       ListNode curr = dummy;
+//       for(int num : arr){
+//         curr.next = new ListNode(num);
+//         curr = curr.next;
+//       }
+//       return dummy.next;
+//     }
+// }
+
+ // ( 1679 )  // Max operation of sum pairs in an array :::
+    
+// class Solution {
+//     public int maxOperations(int[] nums, int k) {
+//         HashMap<Integer, Integer> map = new HashMap<>();
+//         int count = 0;
+//         for (int num : nums) {
+//             int complement = k - num;
+//             if (map.getOrDefault(complement, 0) > 0) {
+//                 count++;
+//                 map.put(complement, map.get(complement) - 1);
+//             } 
+//             else {
+//                 map.put(num, map.getOrDefault(num, 0) + 1);
+//             }
+//         }
+//         return count;
+//     }
+// }
+
+//  (25.)                  //     REVERSE NODES IN K GROUPS :::
+
+// class Solution {
+//     public ListNode reverseKGroup(ListNode head, int k) {
+//         ListNode temp = head;
+//         int cnt = 0;
+//         while (temp != null) {
+//             cnt++;
+//             temp = temp.next;
+//         }
+//         temp = head;
+//         int o = 0;
+//         int arr[] = new int[cnt];
+//         while (temp != null) {
+//             arr[o++] = temp.val;
+//             temp = temp.next;
+//         }
+//         for (int i = 0; i + k - 1 < cnt; i += k) {
+//             int left = i;
+//             int right = i + k - 1;
+//             while (left < right) {
+//                 int temp1 = arr[left];
+//                 arr[left] = arr[right];
+//                 arr[right] = temp1;
+//                 left++;
+//                 right--;
+//             }
+//         }
+//         ListNode dummy = new ListNode(0);
+//         ListNode curr = dummy;
+//         for (int num : arr) {
+//             curr.next = new ListNode(num);
+//             curr = curr.next;
+//         }
+
+//         return dummy.next;
+//     }
+// }
+
