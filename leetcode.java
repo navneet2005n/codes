@@ -853,8 +853,26 @@ class leetcode{
 //             curr.next = new ListNode(num);
 //             curr = curr.next;
 //         }
-
 //         return dummy.next;
+//     }
+// }
+
+//          (1608)    //  Special Array With X Elements Greater Than or Equal X :::
+
+// class Solution {
+//     public int specialArray(int[] nums) {
+//         for(int i = 1; i <= nums.length; i++) { 
+//             int chk = 0;
+//             for(int j = 0; j < nums.length; j++) {
+//                 if(nums[j] >= i) {
+//                     chk++;
+//                 }
+//             }
+//             if(chk == i) {
+//                 return i;
+//             }
+//         }
+//         return -1;
 //     }
 // }
 
