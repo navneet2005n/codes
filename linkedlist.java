@@ -611,3 +611,50 @@ public class linkedlist {
 // }
 
 
+// (TESTPAD QUESTION)
+
+                    //   move the min of ll to head and max of ll to tail ::::: 
+
+                    // static Node shiftSmallLarge(Node head) {
+                    //     if (head == null || head.next == null) return head; 
+                    //     Node temp = head;
+                    //     int cnt = 0;
+                    //     while (temp != null) {
+                    //         cnt++;
+                    //         temp = temp.next;
+                    //     }
+                    //     int arr[] = new int[cnt];
+                    //     temp = head;
+                    //     int k = 0;
+                    //     while (temp != null) {
+                    //         arr[k++] =  temp.data;
+                    //         temp = temp.next;
+                    //     }
+                    //     int max = arr[0], min = arr[0];
+                    //     for (int i = 1; i < arr.length; i++) {
+                    //         if (arr[i] > max) 
+                    //         {
+                    //             max = arr[i];
+                    //         }
+                    //         if (arr[i] < min) 
+                    //         {
+                    //             min = arr[i];
+                    //         }
+                    //     }
+                    //     int arr2[] = new int[cnt];
+                    //     arr2[0] = min;
+                    //     arr2[arr2.length - 1] = max;
+                    //     int j = 1; 
+                    //     for (int i = 0; i < arr.length; i++) {
+                    //         if (arr[i] != min && arr[i] != max) {
+                    //             arr2[j++] = arr[i];
+                    //         }
+                    //     }
+                    //     Node dummy = new Node(0);
+                    //     Node curr = dummy;
+                    //     for (int num : arr2) {
+                    //         curr.next = new Node(num);
+                    //         curr = curr.next;
+                    //     }
+                    //     return dummy.next; 
+                    // }                 
