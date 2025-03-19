@@ -87,3 +87,5 @@ public class bitwisekunal {
             // System.out.print(xor(8));
     }
 }
+
+

@@ -876,3 +876,39 @@ class leetcode{
 //     }
 // }
 
+
+                        //    Bitwise AND of Numbers Range :::
+
+// class Solution {
+//     public int rangeBitwiseAnd(int left, int right) {
+//         while (left < right) {
+//             right = right & (right - 1); 
+//         }
+//         return right;
+//     }
+// }
+
+                    //  TESTPAD QUESTION ::: 
+
+// class Result {
+//     static long solveQuery(int N, int W, int i, char ch) {
+//         int totalRows = (N % W == 0) ? (N / W) : (N / W + 1);
+//         if ((ch == 'R' && i > totalRows) || (ch == 'C' && i > W)) {
+//             return 0;
+//         }
+//         long sum = 0;
+//         if (ch == 'R'){ 
+//             int start = (i - 1) * W + 1;
+//             int end = Math.min(i * W, N);
+//             for (int num = start; num <= end; num++) {
+//                 sum += num;
+//             }
+//         } 
+//         else if (ch == 'C') { 
+//             for (int rowStart = i; rowStart <= N; rowStart += W) {
+//                 sum += rowStart;
+//             }
+//         }
+//         return sum;
+//       }
+//     }

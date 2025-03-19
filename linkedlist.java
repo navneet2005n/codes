@@ -88,8 +88,8 @@ public class linkedlist {
     public int itrsrch(int key){
         Node temp = head;
         int i=0;
-        while (temp!=null) {
-            if(temp.data==key){
+        while (temp != null) {
+            if(temp.data == key){
                 return i;
             }
             temp=temp.next;
@@ -98,7 +98,7 @@ public class linkedlist {
         return -1;
     }
 
-// REVRSE THE LINKEDLIST
+                                // REVERSE THE LINKEDLIST ::::
 
     // public void reverse() {
     //     Node prev = null;
@@ -613,7 +613,7 @@ public class linkedlist {
 
 // (TESTPAD QUESTION)
 
-                    //   move the min of ll to head and max of ll to tail ::::: 
+          // Move the min of ll to head and max of ll to tail ::::: 
 
                     // static Node shiftSmallLarge(Node head) {
                     //     if (head == null || head.next == null) return head; 
