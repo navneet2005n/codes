@@ -232,8 +232,8 @@ public class twod_arr {
         // }
         // System.out.print("Sum of elements of the matrix is: ");
         // System.out.println(sum(matrix));
-        // System.out.println("Spiral of the matrix is: ");
-        // spiral(matrix);
+        System.out.println("Spiral of the matrix is: ");
+        spiral(matrix);
         System.out.println(max_diagonal(matrix));
         System.out.println(bndr_sum(matrix));
     }

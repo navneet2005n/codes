@@ -57,7 +57,7 @@ public class bitwisekunal {
 //         if((n & 1) == 1){
 //             cnt++;
 //         }
-//         return setbits(n>>1 , cnt);
+//         return setbits(n >> 1 , cnt);
 //     }
     
     // public static int xor(int a){

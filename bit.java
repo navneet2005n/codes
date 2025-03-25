@@ -52,6 +52,7 @@ public class bit {
         }
         return cnt;
     }
+
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
@@ -64,6 +65,7 @@ public class bit {
         System.out.println(cntsetbits(num));
     }
 }
+
 //                                      ithbit of a number :::
 
 // public class Main

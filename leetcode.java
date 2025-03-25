@@ -912,3 +912,56 @@ class leetcode{
 //         return sum;
 //       }
 //     }
+
+
+                                //   Next Greater Element 2 :::
+
+// class Solution {
+//     public int[] nextGreaterElements(int[] nums) {
+//         int arr[] = new int[nums.length];
+//         int h = 0;
+//         int n = nums.length;
+//         boolean fnd = false;
+//         for(int i=0;i<nums.length;i++){
+//             fnd = false;
+//             for(int j = (i+1) % n; j!=i; j =(j+1) % n){
+//                 if(nums[j] > nums[i]){
+//                     arr[h++] = nums[j];
+//                     fnd = true;
+//                     break;
+//                 }
+//             }
+//             if(!fnd){
+//                 arr[h++] = -1;
+//             }
+//         }
+//         return arr;
+//     }
+// }
+
+//                      ferquency sort :::
+
+// class Solution {
+//     public int[] frequencySort(int[] nums) {
+//         HashMap<Integer, Integer> h1 = new HashMap<>();
+//         for (int num : nums) {
+//             h1.put(num, h1.getOrDefault(num, 0) + 1);
+//         }
+//         List<Integer> list = new ArrayList<>();
+//         for (int num : nums) {
+//             list.add(num);
+//         }
+//         Collections.sort(list, new Comparator<Integer>(){
+//             public int compare(Integer a, Integer b){
+//                 if (h1.get(a).equals(h1.get(b))) {
+//                     return b - a; 
+//                 }
+//                 return h1.get(a) - h1.get(b);
+//             }
+//         });
+//         for (int i = 0; i < nums.length; i++) {
+//             nums[i] = list.get(i);
+//         }
+//         return nums;
+//     }
+// }
