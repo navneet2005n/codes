@@ -114,6 +114,7 @@ public class linkedlist {
     // }
 
     // Check the given ll is palindrome :
+    
     // 1) find midnode
     // 2) 2nd half reverse
     // 3) check if 1st half(left) == 2nd half(right).

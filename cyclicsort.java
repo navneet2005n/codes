@@ -21,7 +21,7 @@ public class cyclicsort {
         }
     }
 }
- 
+
 
 // 1) Cyclic sort is a pattern that applies to an array of n distinct numbers from 1 to n. 
 // It is used to place the numbers in their correct position in the array. 

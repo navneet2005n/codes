@@ -25,3 +25,19 @@ public class stringbuffer {
 // How It Works?
 // start (inclusive): Characters starting from index 6 are deleted.
 // end (exclusive): Characters up to index 9 (but not including it) are deleted.
+
+//                                 Stringbuffer is used to make strings mutable...  
+
+// 1) stringbuffer is thread safe...
+// 2) stringbuffer is slower than stringbuilder... as it is synchronized it checks that no two threads are accessing the same object at the same time...
+// 3) stringbuffer is mutable...
+// 4) It uses synchronization, meaning only one thread can modify it at a time.
+
+//                                 Stringbuilder 
+
+// StringBuilder is NOT thread-safe (should only be used in a single-threaded program).
+// It does not use synchronization, so multiple threads can modify it at the same time.
+// Faster than StringBuffer.
+// ✅ Use StringBuffer if multiple threads modify the same string.
+// ✅ Use StringBuilder if only one thread modifies the string (better performance).
+

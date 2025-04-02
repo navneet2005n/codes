@@ -55,7 +55,7 @@ public class strings {
         String words[] = str.split(" ");
         for(String word: words){
             if(!word.isEmpty()){
-                word = word.substring(0,1).toUpperCase()+word.substring(1)+" ";
+                word = word.substring(0,1).toUpperCase() + word.substring(1)+" ";
             }
             result += word;
         }
