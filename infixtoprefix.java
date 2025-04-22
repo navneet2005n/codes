@@ -23,7 +23,7 @@ public class infixtoprefix {
                 }
                 op.pop();
             }
-            else {
+             else {
                 if(ch == '+' || ch == '-'){
                     String v2 = val.pop();
                     String v1 = val.pop();
