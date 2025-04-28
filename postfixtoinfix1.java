@@ -1,5 +1,4 @@
 import java.util.Stack;
-
 public class postfixtoinfix1 {
      public static String postfixtoinfix(String str){
         Stack <String> st = new Stack<>();
