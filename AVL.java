@@ -1,4 +1,4 @@
-public class BST {
+public class AVL {
     public class node{
         private int value;
         private node left;
@@ -12,7 +12,7 @@ public class BST {
         }
     } 
     private node root;
-    public BST(){
+    public AVL(){
     }
 
     public int height(node node){
@@ -35,7 +35,7 @@ public class BST {
         }
         System.out.println(details + node.getValue());
         display(node.left,"Left child of " + node.getValue() + ": ");
-        display(node.right,"Right child of " + node.getValue()+ ": ");
+        display(node.right,"Right child of " + node.getValue() + ": ");
 }
     
     public void insert(int value){
@@ -56,7 +56,50 @@ public class BST {
             return node;
         }
         node.height = Math.max(height(node.left), height(node.right)) + 1;
+        return rotate(node);
+    }
+
+    private node rotate(node node){
+        int balance = height(node.left) - height(node.right);
+        if(balance > 1){
+            if(height(node.left.left) >= height(node.left.right)){
+                return rightRotate(node);
+            }
+            else{
+                node.left = leftRotate(node.left);
+                return rightRotate(node);
+            }
+        }
+        if(balance < -1){
+            if(height(node.right.right) >= height(node.right.left)){
+                return leftRotate(node);
+            }
+            else{
+                node.right = rightRotate(node.right);
+                return leftRotate(node);
+            }
+        }
         return node;
+    }
+
+    private node rightRotate(node node){
+        node newRoot = node.left;
+        node temp = newRoot.right;
+        newRoot.right = node;
+        node.left = temp;
+        node.height = Math.max(height(node.left), height(node.right)) + 1;
+        newRoot.height = Math.max(height(newRoot.left), height(newRoot.right)) + 1;
+        return newRoot;
+    }
+
+    private node leftRotate(node node){
+        node newRoot = node.right;
+        node temp = newRoot.left;
+        newRoot.left = node;
+        node.right = temp;
+        node.height = Math.max(height(node.left), height(node.right)) + 1;
+        newRoot.height = Math.max(height(newRoot.left), height(newRoot.right)) + 1;
+        return newRoot;
     }
 
     public boolean balanced(){
@@ -80,12 +123,14 @@ public class BST {
             this.insert(nums[i]);
         }
     }
+
     public static void main(String[] args) {
-        BST bst = new BST();
-        int[] nums = {10, 5, 15, 3, 7, 12, 18};
-        bst.populate(nums);
-        bst.display();
-        System.out.println("Is the tree balanced? " + bst.balanced());
-        System.out.println("Height of the tree: " + bst.height(bst.root)); 
+        AVL tree = new AVL();
+        int [] nums = {5, 6, 4, 3, 2, 1, 9};
+        tree.populate(nums);
+        tree.display();
+        System.out.println("Is the tree balanced? " + tree.balanced());
+        System.out.println("Height of the tree: " + tree.height(tree.root));
+        System.out.println("Is the tree empty? " + tree.isempty());     
     }
 }

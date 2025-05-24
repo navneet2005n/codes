@@ -4,20 +4,20 @@ public class spiral {
         int strcol = 0;
         int endrow = matrix.length-1;
         int endcol = matrix[0].length-1;
-        while(strrow<=endrow && strcol<=endcol){
+        while(strrow <= endrow && strcol <= endcol){
             for(int i = strrow; i<=endrow; i++){
                 System.out.print(matrix[i][strcol]+" ");
             }
-            strcol++;
+            strcol++; 
             for(int j = strcol ; j<=endcol; j++){
                 System.out.print(matrix[endrow][j]+" ");
-            }
+            } 
             endrow--;
             if(strcol <= endcol){
                 for(int i = endrow; i>=strrow; i--){
                 System.out.print(matrix[i][endcol]+" ");
                 }
-            }
+            } 
             endcol--;
              if(strrow <= endrow){
                 for(int j = endcol ; j>=strcol; j--){
@@ -35,12 +35,12 @@ public class spiral {
         int strcol = 0;
         int endrow = matrix.length-1;
         int endcol = matrix[0].length-1;
-        while(strrow<=endrow && strcol<=endcol){
-            for(int i = strcol; i<=endcol; i++){
+        while(strrow <= endrow && strcol <= endcol){
+            for(int i = strcol; i <= endcol; i++){
                 System.out.print(matrix[strrow][i]+" ");
             }
             strrow++;
-            for(int j = strrow ; j<=endrow; j++){
+            for(int j = strrow; j<=endrow; j++){
                 System.out.print(matrix[j][endcol]+" ");
             }
             endcol--;
