@@ -13,6 +13,7 @@ public class selection_sort {
             arr[min_index] = temp;
         }
     }
+    
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         System.out.println("enter the number of elements: ");

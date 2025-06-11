@@ -19,7 +19,7 @@ public class MergeSort {
             } else { 
                 result[k++] = right[j++];
             }
-        }
+        } 
         while (i < left.length) {
             result[k++] = left[i++];
         }
@@ -28,6 +28,7 @@ public class MergeSort {
         }
         return result;
     }
+
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the size of array: ");
