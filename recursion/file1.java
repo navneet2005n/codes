@@ -19,6 +19,16 @@ public class file1 {
         return rev(arr, left+1, right-1);
     }
 
+    public static boolean pln(String str,int i){
+        if(i == str.length()/2){
+            return true;
+        }
+        if(str.charAt(i)!=str.charAt(str.length()-i-1)){
+            return false;
+        }
+        return pln(str, i+1);
+    }
+
     public static void main(String[] args) {
     int n = 3;
     System.out.println(sumofn(n,0,0));
@@ -28,6 +38,8 @@ public class file1 {
         System.out.print(arr[i] + " ");
     }
     System.out.println();
+    String str = "abcba";
+    System.out.println(pln(str, 0));
  }
 }
 

@@ -1,4 +1,4 @@
-public class matrix
+class matrix
 {
     public static void spiral(int matrix[][]){
         int strow = 0;
