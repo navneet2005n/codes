@@ -66,6 +66,31 @@ public class subsequences {
         subsetsum(ind+1, sum, n, arr, li);
     }
 
+// PERMUTATIONS OF ARRAY :::
+
+    public static void recurPermute(int index, int[] nums, List<List<Integer>> ans) {
+        if (index == nums.length) {
+            List<Integer> ds = new ArrayList<>();
+            for (int i = 0; i < nums.length; i++) {
+                ds.add(nums[i]);
+            }
+            ans.add(new ArrayList<>(ds));
+            return;
+        } 
+        for (int i = index; i < nums.length; i++) {
+            swap(i, index, nums);
+            recurPermute(index + 1, nums, ans);
+            swap(i, index, nums); 
+        }
+    }
+  
+    public static void swap(int i, int j, int[] nums) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
+    }
+
+
 // 40. Combination Sum II :::
 
 // class Solution {
@@ -92,8 +117,20 @@ public class subsequences {
 //     }
 // }
 
+// TWO IDENTICAL TREES ::: 
+
+// class Solution {
+//     public boolean isSameTree(TreeNode p, TreeNode q) {
+//         if(p == null && q == null) return true;
+//         if(p == null || q == null) return false;
+//         if(p.val != q.val) return false;
+//         return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+//     }
+// }
+
+
     public static void main(String[] args) {
-        // int[] arr = {3,1};
+        int[] arr = {3,1,2};
         ArrayList<Integer>arr1= new ArrayList<>();
         arr1.add(3);
         arr1.add(2);
@@ -104,6 +141,9 @@ public class subsequences {
         ArrayList <Integer> li = new ArrayList<>();
         subsetsum(0, 0, arr1.size(), arr1, li);
         System.out.println(li);
+        List <List<Integer>> l = new ArrayList<>();
+        recurPermute(0, arr, l);
+        System.out.println(l);
     }
 }
 
