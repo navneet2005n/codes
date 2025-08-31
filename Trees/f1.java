@@ -1,8 +1,6 @@
 package Trees;
 import java.util.*;
 
-import javax.swing.tree.TreeNode;
-
 public class f1 {
     static class Tree {
         Node root;
@@ -138,7 +136,157 @@ public class f1 {
         return Math.max(left, right) + node.data;
     }
 
-    
+// BOUNDARY TRAVERSAL ::: 
+
+    public static boolean isLeaf(Node node) {
+        return (node.left == null && node.right == null);
+    }
+
+    public static void addLeftBoundary(Node root, ArrayList<Integer> res) {
+        Node cur = root.left;
+        while (cur != null) {
+            if (!isLeaf(cur)) res.add(cur.data);
+            if (cur.left != null) cur = cur.left;
+            else cur = cur.right;
+        }
+    }
+  
+    public static void addRightBoundary(Node root, ArrayList<Integer> res) {
+        Node cur = root.right;
+        ArrayList<Integer> tmp = new ArrayList<>();
+        while (cur != null) {
+            if (!isLeaf(cur)) tmp.add(cur.data);
+            if (cur.right != null) cur = cur.right;
+            else cur = cur.left;
+        }
+        for (int i = tmp.size() - 1; i >= 0; --i) {
+            res.add(tmp.get(i));
+        }
+    }
+
+    public static void addLeaves(Node root, ArrayList<Integer> res) {
+        if (isLeaf(root)) {
+            res.add(root.data);
+            return;
+        }
+        if (root.left != null) addLeaves(root.left, res);
+        if (root.right != null) addLeaves(root.right, res);
+    }
+
+    public static ArrayList <Integer> printBoundary(Node node) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        if (!isLeaf(node)) ans.add(node.data);
+
+        addLeftBoundary(node, ans);
+        addLeaves(node, ans);
+        addRightBoundary(node, ans);
+
+        return ans;
+    }
+
+// TOP VIEW OF A BINARY TREE :::
+
+public static class Pair {
+    Node node;
+    int hd;
+
+    Pair(Node _node, int _hd) {
+        node = _node;
+        hd = _hd;
+    }
+}
+
+public static ArrayList <Integer> topView(Node root) {
+    ArrayList <Integer> ans = new ArrayList<>();
+    if (root == null) return ans;
+
+    Map<Integer, Integer> map = new HashMap<>();
+    Queue <Pair> q = new LinkedList<>();
+    q.add(new Pair(root, 0));
+
+    int minHd = 0, maxHd = 0;
+
+    while (!q.isEmpty()) {
+        Pair it = q.remove();
+        int hd = it.hd;
+        Node temp = it.node;
+
+        if (!map.containsKey(hd)) {
+            map.put(hd, temp.data);
+        }
+
+        minHd = Math.min(minHd, hd);
+        maxHd = Math.max(maxHd, hd);
+
+        if (temp.left != null) q.add(new Pair(temp.left, hd - 1));
+        if (temp.right != null) q.add(new Pair(temp.right, hd + 1));
+    }
+
+    for (int hd = minHd; hd <= maxHd; hd++) {
+        if (map.containsKey(hd)) {
+            ans.add(map.get(hd));
+        }
+    }
+    return ans;
+}
+
+// BOTTOM VIEW :::
+
+public static ArrayList <Integer> bottomview(Node root) {
+    ArrayList <Integer> ans = new ArrayList<>();
+    if (root == null) return ans;
+
+    Map<Integer, Integer> map = new HashMap<>();
+    Queue <Pair> q = new LinkedList<>();
+    q.add(new Pair(root, 0));
+
+    int minHd = 0, maxHd = 0;
+
+    while (!q.isEmpty()) {
+        Pair it = q.remove();
+        int hd = it.hd;
+        Node temp = it.node;
+
+        map.put(hd, temp.data);
+
+        minHd = Math.min(minHd, hd);
+        maxHd = Math.max(maxHd, hd);
+
+        if (temp.left != null) q.add(new Pair(temp.left, hd - 1));
+        if (temp.right != null) q.add(new Pair(temp.right, hd + 1));
+    }
+
+    for (int hd = minHd; hd <= maxHd; hd++) {
+        if (map.containsKey(hd)) {
+            ans.add(map.get(hd));
+        }
+    }
+    return ans;
+}
+
+// PRINT ROOT TO LEAF NODES PATHS :::   
+
+    public static void dfs(Node root,List<List<Integer>> li,ArrayList<Integer> li1){
+        if(root == null) return; 
+        if(root.left == null && root.right == null){
+            li1.add(root.data);
+            li.add(new ArrayList<>(li1));
+            return;
+        }
+        li1.add(root.data);
+        dfs(root.left,li,li1);
+        li1.remove(li1.size()-1);
+        dfs(root.right,li,li1);
+    }
+
+    public static List<List<Integer>> allRootToLeaf(Node root) {
+        List<List<Integer>> li = new ArrayList<>();
+        if(root  == null) return li;
+        dfs(root,li,new ArrayList<>());
+        return li;
+    }
+
+
     public static void main(String[] args) {
         Node root = new Node(10);
         root.left = new Node(5);
@@ -153,5 +301,11 @@ public class f1 {
         System.out.println(isBalanced(root));
         System.out.println(diameterOfBinaryTree(root));
         System.out.println(maxPathDown(root, new int[1]));
+        ArrayList <Integer> ans = printBoundary(root);
+        System.out.println(ans);
+        System.out.println("Top View: " + topView(root));
+        System.out.println("Bottom View: " + bottomview(root));
+        List<List<Integer>> l = allRootToLeaf(root);
+        System.out.println(l);
     }
 }
