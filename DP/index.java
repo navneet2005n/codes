@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 
 public class index {
 
@@ -216,26 +217,115 @@ class Solution {
 // TABULATION :::
 
 
-class Solution {
-    public int minimumTotal(List<List<Integer>> triangle) {
-        int n = triangle.size();
-        int[][] dp = new int[n][n];
-        for (int j = 0; j < triangle.get(n - 1).size(); j++) {
-            dp[n - 1][j] = triangle.get(n - 1).get(j);
-        } 
-        for (int i = n - 2; i >= 0; i--) {
-            for (int j = 0; j <= i; j++) {
-                int bottom = triangle.get(i).get(j) + dp[i + 1][j];    
-                int diag   = triangle.get(i).get(j) + dp[i + 1][j + 1];
-                dp[i][j] = Math.min(bottom, diag);
+    // public int minimumTotal(List<List<Integer>> triangle) {
+    //     int n = triangle.size();
+    //     int[][] dp = new int[n][n];
+    //     for (int j = 0; j < triangle.get(n - 1).size(); j++) {
+    //         dp[n - 1][j] = triangle.get(n - 1).get(j);
+    //     } 
+    //     for (int i = n - 2; i >= 0; i--) {
+    //         for (int j = 0; j <= i; j++) {
+    //             int bottom = triangle.get(i).get(j) + dp[i + 1][j];    
+    //             int diag   = triangle.get(i).get(j) + dp[i + 1][j + 1];
+    //             dp[i][j] = Math.min(bottom, diag);
+    //         }
+    //     }
+    //     return dp[0][0];
+    // }
+
+// SUBSET SUM EQUAL TO K ::::
+
+//  MEMOIZATION ::
+
+    // public static boolean helper(int arr[],int index,int target,Boolean dp[][]){
+    //     if(target == 0) return true;
+    //     if(index == 0) return arr[index] == target;
+    //     if(dp[index][target] != null) return dp[index][target];
+    //     boolean nottake = helper(arr,index-1,target,dp);
+    //     boolean take = false;
+    //     if(arr[index] <= target){
+    //     take = helper(arr,index-1,target-arr[index],dp);
+    //     }
+    //     return dp[index][target] = take || nottake;
+    // }
+
+    public static boolean existssub(int arr[],int target){
+
+        // Boolean dp[][] = new Boolean[arr.length][target+1];
+        // return helper(arr,arr.length-1,target,dp);
+
+        // TABULATION :::
+
+        boolean dp[][] = new boolean[arr.length][target+1];
+        for(int i=0; i<arr.length; i++) dp[i][0] = true;
+        dp[0][arr[0]] = true;
+        for(int i=1; i<arr.length; i++){
+            for(int j=1; j<=target; j++){
+                boolean nottkae = dp[i-1][j];
+                boolean take = false;
+                if(arr[i] <= j){
+                    take = dp[i-1][j-arr[i]];
+                }
+                dp[i][j] = take||nottkae;
             }
         }
-        return dp[0][0];
+        return dp[dp.length-1][target];
     }
-}
+
+//  Partition A Set Into Two Subsets With Minimum Absolute Sum Difference 
 
 
+
+
+
+
+// Counts Subsets with Sum K :::
+
+    public static int helper1(int arr[],int target,int sum,int i){
+        if(sum == target) return 1;
+        if(i == 0) {
+            if(arr[i] == target-sum) return 1;
+            else return 0;
+        } 
+        int take = helper1(arr,target,sum+arr[i],i-1);
+        int nottake = helper1(arr,target,sum,i-1);
+        return take + nottake;
+    }
+
+    public static int cntsubsets(int arr[],int target){
+        return helper1(arr,target,0,arr.length-1);
+    }
+ 
+// Count Partitions with Given Difference ::::
+
+    // program
+
+    public static boolean helper(int n){
+        for(int i=2; i*i<=n; i++){
+            if(n %i == 0) return false;
+        }
+        return true;
+    }
+
+    public static int primesum(int n){
+        int temp  = n;
+        int sum = 0;
+        while(temp != 0){
+            int rem = temp % 10;
+            if(helper(rem)){
+                sum += rem;
+            }
+            temp /= 10;
+        }
+        return sum;
+    }
+    
     public static void main(String[] args) {
-        
+        // int arr[] = {1,2,3};
+        // System.out.println(existssub(arr, 3));
+        int arr1[] = {1,2,2,3};
+        System.out.println(cntsubsets(arr1, 2));
+        int n = 238;
+        System.out.println(primesum(n));
     }
 }
