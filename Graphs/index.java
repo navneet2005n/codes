@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 import java.util.TreeSet;
 
 public class index {
@@ -295,6 +296,66 @@ public class index {
         }
         return h1.size();
     }
+                                        // BIPARTITE GRAPH 
+
+    public boolean dfs(int node, int colr, ArrayList <ArrayList<Integer>> li, int color[]){
+        color[node] = colr;
+        for(int it : li.get(node)){
+            if(color[it] == -1){ if(dfs(it,1-colr,li,color) == false) return false;}
+            else if(color[it] == colr) return false;
+        }
+        return true;
+    }
+
+    public boolean isBipartite(int[][] graph) {
+        ArrayList <ArrayList<Integer>> li = new ArrayList<>();
+        int v = graph.length;
+        for(int i=0; i<v; i++){
+            li.add(new ArrayList<>());
+        }
+        for(int i=0; i<v; i++){
+            for(int num : graph[i]){
+                li.get(i).add(num);
+            }
+        }
+        int color[] = new int[v];
+        for(int i=0; i<v; i++){
+            color[i] = -1;
+        }
+        for(int i=0; i<v; i++){
+            if(color[i] == -1){ if(dfs(i,0,li,color) == false) return false; }
+        }
+        return true;
+    }
+
+                                    // Topological Sort 
+    
+// IT IS APPLICABLE FOR ONLY DAG(DIRECTED ACYCLIC GRAPH) AS IT STORES THE SCHEDULING ...
+// IF( directed edge from vertex u to vertex v, u comes before v in the ordering.)
+
+    void dfs(int node,ArrayList<ArrayList<Integer>> li,int vis[],Stack<Integer>st){
+        vis[node] = 1;
+        for(int it : li.get(node)){
+            if(vis[it] == 0){
+                dfs(it,li,vis,st);
+            }
+        }
+        st.push(node);
+    }        
+
+    public ArrayList<Integer> topsort(int v, ArrayList<ArrayList<Integer>> li){
+        int vis[] = new int[v];
+        Stack<Integer> st = new Stack<>();
+        ArrayList<Integer> li1 = new ArrayList<>();
+        for(int i=0; i<v; i++){
+            if(vis[i] == 0){
+                dfs(i,li,vis,st);
+            }
+        }
+        while(!st.isEmpty()) li1.add(st.pop());
+        return li1;
+    }                     
+
 
     public static void main(String[] args) {
         
