@@ -319,7 +319,47 @@ class Solution {
         }
         return sum;
     }
+
+                            // MATRIX MULTIPLICATION CHAIN :::
+
+    // public static int mcm(int arr[],int i,int j){
+    //     if(i == j) return 0;
+    //     int ans = Integer.MAX_VALUE;
+    //     for(int k=i; k<=j-1; k++){
+    //         int cost1 = mcm(arr,i,k);
+    //         int cost2 = mcm(arr,k+1,j);
+    //         int cost3 = arr[i-1] * arr[k] * arr[j];
+    //         int fc = cost1 + cost2 + cost3;
+    //         ans = Math.min(fc,ans);
+    //     }
+    //     return ans;
+    // }
+
+                                        // TABULATION ::::
+                                        
+    // for(int len = 2; len<n; len++){
+    //         for(int i=1; i<= n-len; i++){
+    //             int j = i + len - 1;
+    //              dp[i][j] = Integer.MAX_VALUE; 
+    //             for(int k=i; k<j; k++){
+    //                 int cost1 = dp[i][k];
+    //                 int cost2 = dp[k+1][j];
+    //                 int cost3 = arr[i-1] * arr[k] * arr[j];
+    //                 int fc = cost1 + cost2 + cost3;
+    //                 dp[i][j] = Math.min(fc,dp[i][j]);
+    //             }
+    //         }
+    //     }
+    //     ans = dp[1][n-1];
+    //     return ans;
+    // }
     
+    // static int matrixMultiplication(int arr[]) {
+    //     int n = arr.length;
+    //     Solution so = new Solution();
+    //     // so.mcm(arr.length-1,1,n-1);
+    // }
+
     public static void main(String[] args) {
         // int arr[] = {1,2,3};
         // System.out.println(existssub(arr, 3));

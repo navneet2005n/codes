@@ -2,8 +2,11 @@ package Graphs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.TreeSet;
@@ -328,11 +331,45 @@ public class index {
         return true;
     }
 
+                        // EVENTUAL SAFE STATES :::
+
+                                // BFS (KAHN ALGO)
+
+    public List<Integer> eventualSafeNodes(int[][] graph) {
+        List <Integer> ans = new ArrayList<>();
+        int v = graph.length;
+        int indegree[] = new int[v];
+        List<List<Integer>> revli = new ArrayList<>();
+        for(int i=0; i<v; i++) revli.add(new ArrayList<>());
+        for(int i=0; i<v; i++){
+            for(int num : graph[i]){
+                revli.get(num).add(i);
+                indegree[i]++;
+            }
+        }
+        Queue<Integer> q = new LinkedList<>();
+        for(int i=0; i<v; i++){
+            if(indegree[i] == 0) q.add(i);
+        }
+        while(!q.isEmpty()){
+            int node = q.peek();
+            ans.add(q.poll());
+            for(int it : revli.get(node)){
+                indegree[it]--;
+                if(indegree[it] == 0) q.add(it);
+            }
+        }
+        Collections.sort(ans);
+        return ans;
+}
+
                                     // Topological Sort 
     
 // IT IS APPLICABLE FOR ONLY DAG(DIRECTED ACYCLIC GRAPH) AS IT STORES THE SCHEDULING ...
 // IF( directed edge from vertex u to vertex v, u comes before v in the ordering.)
+                                
 
+                                    // DFS
     void dfs(int node,ArrayList<ArrayList<Integer>> li,int vis[],Stack<Integer>st){
         vis[node] = 1;
         for(int it : li.get(node)){
@@ -355,6 +392,362 @@ public class index {
         while(!st.isEmpty()) li1.add(st.pop());
         return li1;
     }                     
+
+                                        // BFS
+
+    // Function to return list containing vertices in Topological order
+    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) {
+        int indegree[] = new int[V];
+
+        // Step 1: Find indegree of all vertices
+        for (int i = 0; i < V; i++) {
+            for (int it : adj.get(i)) {
+                indegree[it]++;
+            }
+        }
+
+        // Step 2: Push all nodes with indegree 0 into queue
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < V; i++) {
+            if (indegree[i] == 0)
+                q.add(i);
+        }
+
+        // Step 3: Do BFS (Kahn’s Algorithm)
+        int topo[] = new int[V];
+        int index = 0;
+
+        while (!q.isEmpty()) {
+            int node = q.peek();
+            q.remove();
+            topo[index++] = node;
+
+            // Reduce indegree of neighbours
+            for (int it : adj.get(node)) {
+                indegree[it]--;
+                if (indegree[it] == 0)
+                    q.add(it);
+            }
+        }
+
+        return topo;
+    }
+    
+                                    // COURSE SCHEDULE ::: (TOPOLOGICAL SORT ALGO)
+
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        ArrayList<ArrayList<Integer>> li = new ArrayList<>();
+        for (int i =0; i <numCourses; i++) li.add(new ArrayList<>());
+        int indegree[] = new int[numCourses];
+        for(int arr[] : prerequisites){
+            li.get(arr[1]).add(arr[0]);
+        }
+        Queue <Integer> q = new LinkedList<>();
+        for(int i=0; i<numCourses; i++){
+            for(int it : li.get(i)){
+                indegree[it]++;
+            }
+        }
+        for(int i=0; i<numCourses; i++){
+            if(indegree[i] == 0) q.add(i);
+        }
+        int cnt = 0;
+        while(!q.isEmpty()){
+            int node = q.poll();
+            cnt++;
+            for(int it : li.get(node)){
+                indegree[it]--;
+                if(indegree[it] == 0) q.add(it);
+            }
+        } 
+        return cnt == numCourses;
+}
+
+                                    // COURSE SCHEDULE 2 (BFS TOPO)
+
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i < numCourses; i++) adj.add(new ArrayList<>());
+        int indegree[] = new int[numCourses];
+        for (int[] pre : prerequisites) {
+            adj.get(pre[1]).add(pre[0]);
+            indegree[pre[0]]++;
+        }
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) q.add(i);
+        }
+        int ans[] = new int[numCourses];
+        int idx = 0;
+        while (!q.isEmpty()) {
+            int node = q.poll();
+            ans[idx++] = node;
+            for (int it : adj.get(node)) {
+                indegree[it]--;
+                if (indegree[it] == 0) q.add(it);
+            }
+        }
+        if (idx != numCourses) return new int[0];
+        return ans;
+    }
+
+                                    // ALIEN DICTIONARY :::
+
+    public String findOrder(String[] words) {
+        List<List<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i < 26; i++) adj.add(new ArrayList<>());
+        boolean[] present = new boolean[26]; 
+        for (String word : words) {
+            for (char c : word.toCharArray()) present[c - 'a'] = true;
+        }
+        for (int i = 0; i < words.length - 1; i++) {
+            String str1 = words[i];
+            String str2 = words[i + 1];
+            int len = Math.min(str1.length(), str2.length());
+            boolean edgeAdded = false;
+            for (int j = 0; j < len; j++) {
+                if (str1.charAt(j) != str2.charAt(j)) {
+                    adj.get(str1.charAt(j) - 'a').add(str2.charAt(j) - 'a');
+                    edgeAdded = true;
+                    break;
+                }
+            }
+            if (!edgeAdded && str1.length() > str2.length()) return "";
+        }
+        int[] indegree = new int[26];
+        for (int i = 0; i < 26; i++) {
+            for (int neigh : adj.get(i)) indegree[neigh]++;
+        } 
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < 26; i++) {
+            if (present[i] && indegree[i] == 0) q.add(i);
+        } 
+        StringBuilder sb = new StringBuilder();
+        while (!q.isEmpty()) {
+            int node = q.poll();
+            sb.append((char) (node + 'a'));
+            for (int neigh : adj.get(node)) {
+                indegree[neigh]--;
+                if (indegree[neigh] == 0) q.add(neigh);
+            }
+        }
+        for (int i = 0; i < 26; i++) {
+            if (present[i] && indegree[i] > 0) return "";
+        }
+        return sb.toString();
+    }
+
+
+                                        // WORD LADDER 1 :::
+
+// class pair{
+//     String first;
+//     int second;
+//     pair(String first,int second){
+//         this.first = first;
+//         this.second= second;
+//     }
+// }
+
+// class Solution {
+//     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+//         HashSet <String> h1 = new HashSet<>();
+//         for(String str : wordList) h1.add(str);
+//         Queue<pair> q = new LinkedList<>();
+//         q.add(new pair(beginWord,1));
+//         while(!q.isEmpty()){
+//             String str = q.peek().first;
+//             int steps = q.peek().second;
+//             q.poll();
+//             if(str.equals(endWord)) return steps;
+//             for(int i=0; i<str.length(); i++){
+//                 for(char ch = 'a'; ch<='z'; ch++){
+//                     char arr[] = str.toCharArray();
+//                     arr[i] = ch;
+//                     String st = new String(arr);
+//                     if(h1.contains(st)){
+//                         h1.remove(st);
+//                         q.add(new pair(st,steps+1));
+//                     }
+//                 }
+//             }
+//         }
+//         return 0;
+//     }
+// }
+
+//                      DIJKASTRA ALGO (USING PRIORITY QUEUE)
+
+// class pair{
+//     int v;
+//     int wt;
+//     pair(int v,int wt){
+//         this.v = v;
+//         this.wt = wt;
+//     }
+// }
+
+// class Solution {
+//     public int[] dijkstra(int V, int[][] edges, int src) {
+//         ArrayList<ArrayList<pair>> li = new ArrayList<>();
+        
+//         for(int i=0; i<V; i++){
+//             li.add(new ArrayList<pair>());
+//         }
+        
+//         for(int i=0; i<edges.length; i++){
+//             int u = edges[i][0];
+//             int v = edges[i][1];
+//             int wt = edges[i][2];
+//             li.get(u).add(new pair(v,wt));
+//         }
+        
+//         PriorityQueue<pair> pq = new PriorityQueue<>((x,y)->x.wt-y.wt);
+//         int dist[] = new int[V];
+//         for(int i=0; i<dist.length; i++){
+//             dist[i] = (int)1e9;
+//         }
+//         dist[src] = 0;
+//         pq.add(new pair(src,0));
+//         while(!pq.isEmpty()){
+//             pair curr = pq.poll();
+//             int u = curr.v;
+//             int d = curr.wt;
+//             for (pair neighbor : li.get(u)) {
+//                 int v = neighbor.v;
+//                 int wt = neighbor.wt;
+//                 if (dist[u] + wt < dist[v]) {
+//                     dist[v] = dist[u] + wt;
+//                     pq.add(new pair(v, dist[v]));
+//                 }
+//             }
+//         }
+//         return dist;
+//     }
+// }
+
+
+//                                      Path With Minimum Effort
+
+// class pair{
+//     int row;
+//     int col;
+//     int dis;
+//     pair(int row,int col,int dis){
+//         this.row = row;
+//         this.col = col;
+//         this.dis = dis;
+//     }
+// }
+
+//     public int minimumEffortPath(int[][] heights) {
+//         int n = heights.length;
+//         int m = heights[0].length;
+//         int dist[][] = new int[n][m];
+//         for(int i=0; i<dist.length; i++){
+//             for(int j=0; j<m; j++){
+//                 dist[i][j] = (int)1e9;
+//             }
+//         }
+//         int drow[] = {-1,0,1,0};
+//         int dcol[] = {0,1,0,-1};
+//         PriorityQueue<pair> pq = new PriorityQueue<>((a,b)->a.dis - b.dis);
+//         pq.add(new pair(0,0,0));
+//         while(!pq.isEmpty()){
+//             pair it = pq.poll();
+//             int row = it.row;
+//             int col = it.col;
+//             int dis = it.dis;
+//             if(row == n-1 && col == m-1) return dis;
+//             for(int i=0; i<4; i++){
+//                 int nrow = row + drow[i];
+//                 int ncol = col + dcol[i];
+//                 if(nrow >= 0 && ncol >= 0 && nrow < n && ncol < m){
+//                     int neweff = Math.max(Math.abs(heights[row][col] - heights[nrow][ncol]),dis);
+//                     if(neweff < dist[nrow][ncol]){
+//                         dist[nrow][ncol] = neweff;
+//                         pq.add(new pair(nrow,ncol,neweff));
+//                     }
+//                 }
+//             }
+//         }
+//         return 0;
+//     }
+
+                                // BELLMAN FORD ALGO
+
+    public int[] bellmanFord(int V, int[][] edges, int src) {
+        int dist[] = new int[V];
+        for (int i = 0; i < V; i++)
+            dist[i] = (int) 1e8;
+            dist[src] = 0;
+        for (int i = 0; i < V - 1; i++) {
+            for (int[] it : edges) {  
+                int u = it[0];
+                int v = it[1];
+                int wt = it[2];
+                if (dist[u] != (int) 1e8 && dist[u] + wt < dist[v]) {
+                    dist[v] = dist[u] + wt;
+                }
+            }
+        } 
+        for (int[] it : edges) {
+            int u = it[0];
+            int v = it[1];
+            int wt = it[2];
+            if (dist[u] != (int) 1e8 && dist[u] + wt < dist[v]) {
+                return new int[]{-1};
+            }
+        }
+        return dist;
+    }
+
+//                                  MINIMUMM SPANNING TREE 
+
+// class pair{
+//     int node;
+//     int distance;
+//     pair(int node,int distance){
+//         this.node = node;
+//         this.distance= distance;
+//     }
+// }
+
+// class Solution {
+//     public int spanningTree(int V, int[][] edges) {
+//         ArrayList<ArrayList<pair>> adj = new ArrayList<>();
+//         for(int i=0; i<V; i++){
+//             adj.add(new ArrayList<pair>());
+//         }
+//         for(int i=0; i<edges.length; i++){
+//             int u = edges[i][0];
+//             int v = edges[i][1];
+//             int wt = edges[i][2];
+//             adj.get(u).add(new pair(v,wt));
+//             adj.get(v).add(new pair(u,wt));
+//         } 
+//         int sum = 0;
+//         int vis[] = new int[V];
+//         PriorityQueue <pair> q = new PriorityQueue<>((x,y)->x.distance-y.distance);
+//         q.add(new pair(0,0));
+//         while(!q.isEmpty()){
+//             pair it = q.poll();
+//             int wt = it.distance;
+//             int node = it.node;
+//             if(vis[node] == 1) continue;
+//             vis[node] = 1;
+//             sum += wt;
+            
+//         for(pair edge : adj.get(node)){
+//             int adjnode = edge.node;
+//             int wt1 = edge.distance;
+//             if(vis[adjnode] == 0)  q.add(new pair(adjnode,wt1));
+//         }
+//         }
+//         return sum;
+//     }
+// }
+
 
 
     public static void main(String[] args) {
